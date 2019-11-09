@@ -6,5 +6,5 @@ CXX_FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sd
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/Users/chenyikun/CLionProjects/miniplc0-compiler-master/. 
+CXX_INCLUDES = -I/Users/chenyikun/CLionProjects/miniplc0-compiler/. 
 

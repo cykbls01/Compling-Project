@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/chenyikun/CLionProjects/miniplc0-compiler-master/3rd_party/fmt/src/format.cc" "/Users/chenyikun/CLionProjects/miniplc0-compiler-master/cmake-build-debug/3rd_party/fmt/CMakeFiles/fmt.dir/src/format.cc.o"
-  "/Users/chenyikun/CLionProjects/miniplc0-compiler-master/3rd_party/fmt/src/posix.cc" "/Users/chenyikun/CLionProjects/miniplc0-compiler-master/cmake-build-debug/3rd_party/fmt/CMakeFiles/fmt.dir/src/posix.cc.o"
+  "/Users/chenyikun/CLionProjects/miniplc0-compiler/3rd_party/fmt/src/format.cc" "/Users/chenyikun/CLionProjects/miniplc0-compiler/cmake-build-debug/3rd_party/fmt/CMakeFiles/fmt.dir/src/format.cc.o"
+  "/Users/chenyikun/CLionProjects/miniplc0-compiler/3rd_party/fmt/src/posix.cc" "/Users/chenyikun/CLionProjects/miniplc0-compiler/cmake-build-debug/3rd_party/fmt/CMakeFiles/fmt.dir/src/posix.cc.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 

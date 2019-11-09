@@ -6,5 +6,5 @@ CXX_FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sd
 
 CXX_DEFINES = -DFMT_LOCALE
 
-CXX_INCLUDES = -I/Users/chenyikun/CLionProjects/miniplc0-compiler-master/. -I/Users/chenyikun/CLionProjects/miniplc0-compiler-master/3rd_party/catch2 -I/Users/chenyikun/CLionProjects/miniplc0-compiler-master/3rd_party/fmt/include 
+CXX_INCLUDES = -I/Users/chenyikun/CLionProjects/miniplc0-compiler/. -I/Users/chenyikun/CLionProjects/miniplc0-compiler/3rd_party/catch2 -I/Users/chenyikun/CLionProjects/miniplc0-compiler/3rd_party/fmt/include 
 

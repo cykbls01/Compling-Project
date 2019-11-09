@@ -1,4 +1,4 @@
-# Install script for directory: /Users/chenyikun/CLionProjects/miniplc0-compiler-master
+# Install script for directory: /Users/chenyikun/CLionProjects/miniplc0-compiler
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,9 +34,9 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/Users/chenyikun/CLionProjects/miniplc0-compiler-master/cmake-build-debug/3rd_party/argparse/cmake_install.cmake")
-  include("/Users/chenyikun/CLionProjects/miniplc0-compiler-master/cmake-build-debug/3rd_party/fmt/cmake_install.cmake")
-  include("/Users/chenyikun/CLionProjects/miniplc0-compiler-master/cmake-build-debug/3rd_party/catch2/cmake_install.cmake")
+  include("/Users/chenyikun/CLionProjects/miniplc0-compiler/cmake-build-debug/3rd_party/argparse/cmake_install.cmake")
+  include("/Users/chenyikun/CLionProjects/miniplc0-compiler/cmake-build-debug/3rd_party/fmt/cmake_install.cmake")
+  include("/Users/chenyikun/CLionProjects/miniplc0-compiler/cmake-build-debug/3rd_party/catch2/cmake_install.cmake")
 
 endif()
 
@@ -48,5 +48,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/chenyikun/CLionProjects/miniplc0-compiler-master/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/chenyikun/CLionProjects/miniplc0-compiler/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

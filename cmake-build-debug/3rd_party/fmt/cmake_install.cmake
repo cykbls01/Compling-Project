@@ -1,4 +1,4 @@
-# Install script for directory: /Users/chenyikun/CLionProjects/miniplc0-compiler-master/3rd_party/fmt
+# Install script for directory: /Users/chenyikun/CLionProjects/miniplc0-compiler/3rd_party/fmt
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

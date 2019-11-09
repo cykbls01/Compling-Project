@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/chenyikun/CLionProjects/miniplc0-compiler-master/main.cpp" "/Users/chenyikun/CLionProjects/miniplc0-compiler-master/cmake-build-debug/CMakeFiles/miniplc0.dir/main.cpp.o"
+  "/Users/chenyikun/CLionProjects/miniplc0-compiler/main.cpp" "/Users/chenyikun/CLionProjects/miniplc0-compiler/cmake-build-debug/CMakeFiles/miniplc0.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 
@@ -22,8 +22,8 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/Users/chenyikun/CLionProjects/miniplc0-compiler-master/cmake-build-debug/CMakeFiles/miniplc0_lib.dir/DependInfo.cmake"
-  "/Users/chenyikun/CLionProjects/miniplc0-compiler-master/cmake-build-debug/3rd_party/fmt/CMakeFiles/fmt.dir/DependInfo.cmake"
+  "/Users/chenyikun/CLionProjects/miniplc0-compiler/cmake-build-debug/CMakeFiles/miniplc0_lib.dir/DependInfo.cmake"
+  "/Users/chenyikun/CLionProjects/miniplc0-compiler/cmake-build-debug/3rd_party/fmt/CMakeFiles/fmt.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

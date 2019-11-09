@@ -58,19 +58,19 @@ string
 cctype
 -
 
-/Users/chenyikun/CLionProjects/miniplc0-compiler-master/analyser/analyser.cpp
+/Users/chenyikun/CLionProjects/miniplc0-compiler/analyser/analyser.cpp
 analyser.h
-/Users/chenyikun/CLionProjects/miniplc0-compiler-master/analyser/analyser.h
+/Users/chenyikun/CLionProjects/miniplc0-compiler/analyser/analyser.h
 climits
 -
 
-/Users/chenyikun/CLionProjects/miniplc0-compiler-master/analyser/analyser.h
+/Users/chenyikun/CLionProjects/miniplc0-compiler/analyser/analyser.h
 error/error.h
-/Users/chenyikun/CLionProjects/miniplc0-compiler-master/analyser/error/error.h
+/Users/chenyikun/CLionProjects/miniplc0-compiler/analyser/error/error.h
 instruction/instruction.h
-/Users/chenyikun/CLionProjects/miniplc0-compiler-master/analyser/instruction/instruction.h
+/Users/chenyikun/CLionProjects/miniplc0-compiler/analyser/instruction/instruction.h
 tokenizer/token.h
-/Users/chenyikun/CLionProjects/miniplc0-compiler-master/analyser/tokenizer/token.h
+/Users/chenyikun/CLionProjects/miniplc0-compiler/analyser/tokenizer/token.h
 vector
 -
 optional
@@ -84,9 +84,9 @@ cstdint
 cstddef
 -
 
-/Users/chenyikun/CLionProjects/miniplc0-compiler-master/tokenizer/tokenizer.cpp
+/Users/chenyikun/CLionProjects/miniplc0-compiler/tokenizer/tokenizer.cpp
 tokenizer/tokenizer.h
-/Users/chenyikun/CLionProjects/miniplc0-compiler-master/tokenizer/tokenizer/tokenizer.h
+/Users/chenyikun/CLionProjects/miniplc0-compiler/tokenizer/tokenizer/tokenizer.h
 cctype
 -
 sstream

@@ -102,13 +102,13 @@ xlocale.h
 format.h
 ../3rd_party/fmt/include/fmt/format.h
 
-/Users/chenyikun/CLionProjects/miniplc0-compiler-master/3rd_party/fmt/src/format.cc
+/Users/chenyikun/CLionProjects/miniplc0-compiler/3rd_party/fmt/src/format.cc
 fmt/format-inl.h
-/Users/chenyikun/CLionProjects/miniplc0-compiler-master/3rd_party/fmt/src/fmt/format-inl.h
+/Users/chenyikun/CLionProjects/miniplc0-compiler/3rd_party/fmt/src/fmt/format-inl.h
 
-/Users/chenyikun/CLionProjects/miniplc0-compiler-master/3rd_party/fmt/src/posix.cc
+/Users/chenyikun/CLionProjects/miniplc0-compiler/3rd_party/fmt/src/posix.cc
 fmt/posix.h
-/Users/chenyikun/CLionProjects/miniplc0-compiler-master/3rd_party/fmt/src/fmt/posix.h
+/Users/chenyikun/CLionProjects/miniplc0-compiler/3rd_party/fmt/src/fmt/posix.h
 limits.h
 -
 sys/stat.h

@@ -43,10 +43,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/chenyikun/CLionProjects/miniplc0-compiler-master
+CMAKE_SOURCE_DIR = /Users/chenyikun/CLionProjects/miniplc0-compiler
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/chenyikun/CLionProjects/miniplc0-compiler-master/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/chenyikun/CLionProjects/miniplc0-compiler/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/miniplc0_lib.dir/depend.make
@@ -59,29 +59,29 @@ include CMakeFiles/miniplc0_lib.dir/flags.make
 
 CMakeFiles/miniplc0_lib.dir/tokenizer/tokenizer.cpp.o: CMakeFiles/miniplc0_lib.dir/flags.make
 CMakeFiles/miniplc0_lib.dir/tokenizer/tokenizer.cpp.o: ../tokenizer/tokenizer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/chenyikun/CLionProjects/miniplc0-compiler-master/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/miniplc0_lib.dir/tokenizer/tokenizer.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/miniplc0_lib.dir/tokenizer/tokenizer.cpp.o -c /Users/chenyikun/CLionProjects/miniplc0-compiler-master/tokenizer/tokenizer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/chenyikun/CLionProjects/miniplc0-compiler/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/miniplc0_lib.dir/tokenizer/tokenizer.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/miniplc0_lib.dir/tokenizer/tokenizer.cpp.o -c /Users/chenyikun/CLionProjects/miniplc0-compiler/tokenizer/tokenizer.cpp
 
 CMakeFiles/miniplc0_lib.dir/tokenizer/tokenizer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/miniplc0_lib.dir/tokenizer/tokenizer.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/chenyikun/CLionProjects/miniplc0-compiler-master/tokenizer/tokenizer.cpp > CMakeFiles/miniplc0_lib.dir/tokenizer/tokenizer.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/chenyikun/CLionProjects/miniplc0-compiler/tokenizer/tokenizer.cpp > CMakeFiles/miniplc0_lib.dir/tokenizer/tokenizer.cpp.i
 
 CMakeFiles/miniplc0_lib.dir/tokenizer/tokenizer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/miniplc0_lib.dir/tokenizer/tokenizer.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/chenyikun/CLionProjects/miniplc0-compiler-master/tokenizer/tokenizer.cpp -o CMakeFiles/miniplc0_lib.dir/tokenizer/tokenizer.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/chenyikun/CLionProjects/miniplc0-compiler/tokenizer/tokenizer.cpp -o CMakeFiles/miniplc0_lib.dir/tokenizer/tokenizer.cpp.s
 
 CMakeFiles/miniplc0_lib.dir/analyser/analyser.cpp.o: CMakeFiles/miniplc0_lib.dir/flags.make
 CMakeFiles/miniplc0_lib.dir/analyser/analyser.cpp.o: ../analyser/analyser.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/chenyikun/CLionProjects/miniplc0-compiler-master/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/miniplc0_lib.dir/analyser/analyser.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/miniplc0_lib.dir/analyser/analyser.cpp.o -c /Users/chenyikun/CLionProjects/miniplc0-compiler-master/analyser/analyser.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/chenyikun/CLionProjects/miniplc0-compiler/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/miniplc0_lib.dir/analyser/analyser.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/miniplc0_lib.dir/analyser/analyser.cpp.o -c /Users/chenyikun/CLionProjects/miniplc0-compiler/analyser/analyser.cpp
 
 CMakeFiles/miniplc0_lib.dir/analyser/analyser.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/miniplc0_lib.dir/analyser/analyser.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/chenyikun/CLionProjects/miniplc0-compiler-master/analyser/analyser.cpp > CMakeFiles/miniplc0_lib.dir/analyser/analyser.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/chenyikun/CLionProjects/miniplc0-compiler/analyser/analyser.cpp > CMakeFiles/miniplc0_lib.dir/analyser/analyser.cpp.i
 
 CMakeFiles/miniplc0_lib.dir/analyser/analyser.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/miniplc0_lib.dir/analyser/analyser.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/chenyikun/CLionProjects/miniplc0-compiler-master/analyser/analyser.cpp -o CMakeFiles/miniplc0_lib.dir/analyser/analyser.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/chenyikun/CLionProjects/miniplc0-compiler/analyser/analyser.cpp -o CMakeFiles/miniplc0_lib.dir/analyser/analyser.cpp.s
 
 # Object files for target miniplc0_lib
 miniplc0_lib_OBJECTS = \
@@ -95,7 +95,7 @@ libminiplc0_lib.a: CMakeFiles/miniplc0_lib.dir/tokenizer/tokenizer.cpp.o
 libminiplc0_lib.a: CMakeFiles/miniplc0_lib.dir/analyser/analyser.cpp.o
 libminiplc0_lib.a: CMakeFiles/miniplc0_lib.dir/build.make
 libminiplc0_lib.a: CMakeFiles/miniplc0_lib.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/chenyikun/CLionProjects/miniplc0-compiler-master/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library libminiplc0_lib.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/chenyikun/CLionProjects/miniplc0-compiler/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library libminiplc0_lib.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/miniplc0_lib.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/miniplc0_lib.dir/link.txt --verbose=$(VERBOSE)
 
@@ -109,6 +109,6 @@ CMakeFiles/miniplc0_lib.dir/clean:
 .PHONY : CMakeFiles/miniplc0_lib.dir/clean
 
 CMakeFiles/miniplc0_lib.dir/depend:
-	cd /Users/chenyikun/CLionProjects/miniplc0-compiler-master/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/chenyikun/CLionProjects/miniplc0-compiler-master /Users/chenyikun/CLionProjects/miniplc0-compiler-master /Users/chenyikun/CLionProjects/miniplc0-compiler-master/cmake-build-debug /Users/chenyikun/CLionProjects/miniplc0-compiler-master/cmake-build-debug /Users/chenyikun/CLionProjects/miniplc0-compiler-master/cmake-build-debug/CMakeFiles/miniplc0_lib.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/chenyikun/CLionProjects/miniplc0-compiler/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/chenyikun/CLionProjects/miniplc0-compiler /Users/chenyikun/CLionProjects/miniplc0-compiler /Users/chenyikun/CLionProjects/miniplc0-compiler/cmake-build-debug /Users/chenyikun/CLionProjects/miniplc0-compiler/cmake-build-debug /Users/chenyikun/CLionProjects/miniplc0-compiler/cmake-build-debug/CMakeFiles/miniplc0_lib.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/miniplc0_lib.dir/depend
 
