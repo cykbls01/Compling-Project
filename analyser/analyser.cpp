@@ -188,7 +188,7 @@ namespace miniplc0 {
                     break;
                 }
                 case TokenType ::SEMICOLON:
-                    //next=nextToken();
+                    next=nextToken();
                     break;
 				// 这里需要你针对不同的预读结果来调用不同的子程序
 				// 注意我们没有针对空语句单独声明一个函数，因此可以直接在这里返回
@@ -293,6 +293,7 @@ namespace miniplc0 {
         next = nextToken();
         if (!next.has_value() || next.value().GetType() != TokenType::SEMICOLON)
             return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrNoSemicolon);
+        if(isInitializedVariable(std::any_cast<std::string>(vara.value().GetValue()))==false)
         addVariable(vara.value());
 		_instructions.emplace_back(Operation::STO,getIndex(std::any_cast<std::string>(vara.value().GetValue())));
 		// 标识符声明过吗？
@@ -390,7 +391,7 @@ namespace miniplc0 {
 			return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrIncompleteExpression);
 		switch (next.value().GetType()) {
             case TokenType ::IDENTIFIER: {
-                if(isInitializedVariable(std::any_cast<std::string>(next.value().GetValue()))==false)
+                if(isInitializedVariable(std::any_cast<std::string>(next.value().GetValue()))==false&&isConstant(std::any_cast<std::string>(next.value().GetValue()))==false)
                     return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrNotInitialized);
                 _instructions.emplace_back(Operation::LOD,
                                            getIndex(std::any_cast<std::string>(next.value().GetValue())));

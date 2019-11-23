@@ -1,4 +1,4 @@
 begin
-var a=1;
-a=a+a*a;
+const a=1;
++;
 end
