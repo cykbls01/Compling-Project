@@ -2,7 +2,6 @@
 
 #include <cctype>
 #include <sstream>
-#include <3rd_party/fmt/include/fmt/ostream.h>
 
 namespace miniplc0 {
 
@@ -87,28 +86,14 @@ namespace miniplc0 {
 						current_state = DFAState::EQUAL_SIGN_STATE;
 						break;
 					case '-':
-						current_state=DFAState::MINUS_SIGN_STATE;
-						break;// 请填空：切换到减号的状态
+						// 请填空：切换到减号的状态
 					case '+':
-						current_state=DFAState::PLUS_SIGN_STATE;
-						break;// 请填空：切换到加号的状态
+						// 请填空：切换到加号的状态
 					case '*':
-					    current_state=DFAState::MULTIPLICATION_SIGN_STATE;
-					    break;
 						// 请填空：切换状态
 					case '/':
-						current_state=DFAState::DIVISION_SIGN_STATE;
-						break;// 请填空：切换状态
+						// 请填空：切换状态
 
-                        case ';':
-                            current_state=DFAState::SEMICOLON_STATE;
-                            break;
-					    case '(':
-					        current_state=DFAState::LEFTBRACKET_STATE;
-                            break;
-                        case ')':
-                            current_state=DFAState::RIGHTBRACKET_STATE;
-                            break;
 					///// 请填空：
 					///// 对于其他的可接受字符
 					///// 切换到对应的状态
@@ -138,68 +123,6 @@ namespace miniplc0 {
 								// 当前状态是无符号整数
 			case UNSIGNED_INTEGER_STATE: {
 				// 请填空：
-                if (!current_char.has_value())
-                {
-                    std::string sss;
-                    int num;
-                    ss >> sss;
-                    const char *c=sss.c_str();
-                    int i=0;
-                    for(i=0;c[i]=='0';i++)
-                    {
-
-                    }
-                    int l=sss.length()-i;
-                    if(l>10)
-                    {
-                        return std::make_pair(std::optional<Token>(), std::make_optional<CompilationError>(pos,ErrorCode::ErrIntegerOverflow));
-                    }
-                    else if(l==10) {
-                        if (strcmp("2147483647", sss.c_str()) < 0) {
-                            return std::make_pair(std::optional<Token>(),std::make_optional<CompilationError>(pos,ErrorCode::ErrIntegerOverflow));
-                        }
-                    }
-                    num= std::stoi(sss);
-                    return std::make_pair(std::make_optional<Token>(TokenType::UNSIGNED_INTEGER, num, pos, currentPos()), std::optional<CompilationError>());
-
-                }
-                else if(miniplc0::isdigit(current_char.value()))
-                {
-                    ss << current_char.value();
-                }
-                else if(miniplc0::isalpha(current_char.value()))
-                {
-                    ss << current_char.value();
-                    current_state=DFAState::IDENTIFIER_STATE;
-
-                }
-                else
-                {
-                    unreadLast();
-                    std::string sss;
-                    int num;
-                    ss >> sss;
-                    const char *c=sss.c_str();
-                    int i=0;
-                    for(i=0;c[i]=='0';i++)
-                    {
-
-                    }
-                    int l=sss.length()-i;
-                    if(l>10)
-                    {
-
-                        return std::make_pair(std::optional<Token>(), std::make_optional<CompilationError>(pos,ErrorCode::ErrIntegerOverflow));
-                    }
-                    else if(l==10) {
-                        if (strcmp("2147483647", sss.c_str()) < 0) {
-                            return std::make_pair(std::optional<Token>(),std::make_optional<CompilationError>(pos,ErrorCode::ErrIntegerOverflow));
-                        }
-                    }
-                    num= std::stoi(sss);
-
-                    return std::make_pair(std::make_optional<Token>(TokenType::UNSIGNED_INTEGER, num, pos, currentPos()), std::optional<CompilationError>());
-                }
 				// 如果当前已经读到了文件尾，则解析已经读到的字符串为整数
 				//     解析成功则返回无符号整数类型的token，否则返回编译错误
 				// 如果读到的字符是数字，则存储读到的字符
@@ -210,60 +133,6 @@ namespace miniplc0 {
 			}
 			case IDENTIFIER_STATE: {
 				// 请填空：
-
-                if (!current_char.has_value())
-                {
-                    std::string result;
-
-                    ss >> result;
-
-
-                    if(result=="begin")
-                        return std::make_pair(std::make_optional<Token>(TokenType::BEGIN, result, pos, currentPos()), std::optional<CompilationError>());
-                    else if(result=="end")
-                        return std::make_pair(std::make_optional<Token>(TokenType::END, result, pos, currentPos()), std::optional<CompilationError>());
-                    else if(result=="var")
-                        return std::make_pair(std::make_optional<Token>(TokenType::VAR, result, pos, currentPos()), std::optional<CompilationError>());
-                    else if(result=="const")
-                        return std::make_pair(std::make_optional<Token>(TokenType::CONST, result, pos, currentPos()), std::optional<CompilationError>());
-                    else if(result=="print")
-                        return std::make_pair(std::make_optional<Token>(TokenType::PRINT, result, pos, currentPos()), std::optional<CompilationError>());
-                    else
-                        return std::make_pair(std::make_optional<Token>(TokenType::IDENTIFIER, result, pos, currentPos()), std::optional<CompilationError>());
-
-                }
-                else if(miniplc0::isalpha(current_char.value())||miniplc0::isdigit(current_char.value()))
-                {
-
-                    ss << current_char.value();
-
-                }
-                else
-                {
-
-                    unreadLast();
-                    std::string result;
-
-                    ss >> result;
-
-                    if(result=="begin")
-                        return std::make_pair(std::make_optional<Token>(TokenType::BEGIN, result, pos, currentPos()), std::optional<CompilationError>());
-                    else if(result=="end")
-                        return std::make_pair(std::make_optional<Token>(TokenType::END, result, pos, currentPos()), std::optional<CompilationError>());
-                    else if(result=="var")
-                        return std::make_pair(std::make_optional<Token>(TokenType::VAR, result, pos, currentPos()), std::optional<CompilationError>());
-                    else if(result=="const")
-                        return std::make_pair(std::make_optional<Token>(TokenType::CONST, result, pos, currentPos()), std::optional<CompilationError>());
-                    else if(result=="print")
-                        return std::make_pair(std::make_optional<Token>(TokenType::PRINT, result, pos, currentPos()), std::optional<CompilationError>());
-                    else{
-
-                        return std::make_pair(
-                                std::make_optional<Token>(TokenType::IDENTIFIER, result, pos, currentPos()),
-                                std::optional<CompilationError>());
-                    }
-
-                }
 				// 如果当前已经读到了文件尾，则解析已经读到的字符串
 				//     如果解析结果是关键字，那么返回对应关键字的token，否则返回标识符的token
 				// 如果读到的是字符或字母，则存储读到的字符
@@ -280,44 +149,8 @@ namespace miniplc0 {
 			}
 								  // 当前状态为减号的状态
 			case MINUS_SIGN_STATE: {
-				unreadLast();
-                return std::make_pair(std::make_optional<Token>(TokenType::MINUS_SIGN, '-', pos, currentPos()), std::optional<CompilationError>());
-                // 请填空：回退，并返回减号token
+				// 请填空：回退，并返回减号token
 			}
-                case MULTIPLICATION_SIGN_STATE: {
-                    unreadLast();
-                    return std::make_pair(std::make_optional<Token>(TokenType::MULTIPLICATION_SIGN, '*', pos, currentPos()), std::optional<CompilationError>());
-
-                }
-
-                case DIVISION_SIGN_STATE: {
-                    unreadLast();
-                    return std::make_pair(std::make_optional<Token>(TokenType::DIVISION_SIGN, '/', pos, currentPos()), std::optional<CompilationError>());
-
-                }
-                case EQUAL_SIGN_STATE: {
-                    unreadLast();
-                    return std::make_pair(std::make_optional<Token>(TokenType::EQUAL_SIGN, '=', pos, currentPos()), std::optional<CompilationError>());
-
-                }
-
-                case SEMICOLON_STATE: {
-                    unreadLast();
-                    return std::make_pair(std::make_optional<Token>(TokenType::SEMICOLON, ';', pos, currentPos()), std::optional<CompilationError>());
-
-                }
-
-                case LEFTBRACKET_STATE: {
-                    unreadLast();
-                    return std::make_pair(std::make_optional<Token>(TokenType::LEFT_BRACKET, '(', pos, currentPos()), std::optional<CompilationError>());
-
-                }
-
-                case RIGHTBRACKET_STATE: {
-                    unreadLast();
-                    return std::make_pair(std::make_optional<Token>(TokenType::RIGHT_BRACKET, ')', pos, currentPos()), std::optional<CompilationError>());
-
-                }
 
 								   // 请填空：
 								   // 对于其他的合法状态，进行合适的操作
