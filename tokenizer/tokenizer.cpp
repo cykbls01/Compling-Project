@@ -1,4 +1,4 @@
-#include "tokenizer/tokenizer.h"
+﻿#include "tokenizer/tokenizer.h"
 
 #include <cctype>
 #include <sstream>
@@ -155,7 +155,7 @@ namespace miniplc0 {
                         return std::make_pair(std::optional<Token>(), std::make_optional<CompilationError>(pos,ErrorCode::ErrIntegerOverflow));
                     }
                     else if(l==10) {
-                        if (strcmp("2147483647", sss.c_str()) < 0) {
+                        if (std::strcmp("2147483647", sss.c_str()) < 0) {
                             return std::make_pair(std::optional<Token>(),std::make_optional<CompilationError>(pos,ErrorCode::ErrIntegerOverflow));
                         }
                     }
@@ -192,7 +192,7 @@ namespace miniplc0 {
                         return std::make_pair(std::optional<Token>(), std::make_optional<CompilationError>(pos,ErrorCode::ErrIntegerOverflow));
                     }
                     else if(l==10) {
-                        if (strcmp("2147483647", sss.c_str()) < 0) {
+                        if (std::strcmp("2147483647", sss.c_str()) < 0) {
                             return std::make_pair(std::optional<Token>(),std::make_optional<CompilationError>(pos,ErrorCode::ErrIntegerOverflow));
                         }
                     }
