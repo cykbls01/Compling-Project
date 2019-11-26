@@ -1,2 +1,0 @@
-var intMin = -2147483647-1;
-const intMIN = - 2147483647 - 1;

@@ -2,7 +2,7 @@
 
 #include <cctype>
 #include <sstream>
-#include <3rd_party/fmt/include/fmt/ostream.h>
+
 
 namespace miniplc0 {
 

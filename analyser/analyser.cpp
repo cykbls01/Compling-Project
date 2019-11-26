@@ -1,7 +1,7 @@
 #include "analyser.h"
 
 #include <climits>
-#include <3rd_party/fmt/include/fmt/ostream.h>
+
 
 namespace miniplc0 {
 	std::pair<std::vector<Instruction>, std::optional<CompilationError>> Analyser::Analyse() {
@@ -135,15 +135,18 @@ namespace miniplc0 {
             }
 
         // '='
-            addVariable(vara.value());
             _instructions.emplace_back(Operation::LIT,0);
+
 
 
         // '<表达式>'
             auto err = analyseExpression();
             if (err.has_value())
                 return err;
+            addVariable(vara.value());
+
             _instructions.emplace_back(Operation::STO,getIndex(std::any_cast<std::string>(vara.value().GetValue())));
+
 
         // ';'
             next = nextToken();
@@ -211,27 +214,22 @@ namespace miniplc0 {
 		if(next.value().GetType()==TokenType::MINUS_SIGN)
         {
 		    next=nextToken();
-		    //long long int num=2147483648;
-		    //if(std::any_cast<long long int>(next.value().GetValue()) > num)
-		        //return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrInvalidAssignment);
+		    if(next.value().GetType()!=UNSIGNED_INTEGER)
+		        return std::make_optional<CompilationError>(_current_pos,ErrorCode::ErrInvalidInput);
 		    out=-1*std::any_cast<int>(next.value().GetValue());
 
         }
 		else if(next.value().GetType()==TokenType::PLUS_SIGN)
         {
             next=nextToken();
-            //long long int num=2147483647;
-            //if(std::any_cast<long long int>(next.value().GetValue()) > num)
-                //return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrInvalidAssignment);
+            if(next.value().GetType()!=UNSIGNED_INTEGER)
+                return std::make_optional<CompilationError>(_current_pos,ErrorCode::ErrInvalidInput);
             out=std::any_cast<int>(next.value().GetValue());
 
         }
 		else if(next.value().GetType()==TokenType::UNSIGNED_INTEGER)
         {
-            //long long int num=2147483647;
-            //if(std::any_cast<long long int>(next.value().GetValue()) > num)
-                //return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrInvalidAssignment);
-            out=std::any_cast<int>(next.value().GetValue());
+           out=std::any_cast<int>(next.value().GetValue());
         }
 		else return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrInvalidAssignment);
 		return {};
@@ -275,11 +273,11 @@ namespace miniplc0 {
 	std::optional<CompilationError> Analyser::analyseAssignmentStatement() {
 		// 这里除了语法分析以外还要留意
 		auto next=nextToken();
-		if(isDeclared(std::any_cast<std::string>(next.value().GetValue()))== false)
+		if(isDeclared(next.value().GetValueString())== false)
             return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrNotDeclared);
 		else if(next.value().GetType()!=TokenType::IDENTIFIER)
             return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrInvalidIdentifier);
-		else if(isConstant(std::any_cast<std::string>(next.value().GetValue()))== true)
+		else if(isConstant(next.value().GetValueString())== true)
             return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrAssignToConstant);
         auto vara=next;
 		next=nextToken();
@@ -293,9 +291,9 @@ namespace miniplc0 {
         next = nextToken();
         if (!next.has_value() || next.value().GetType() != TokenType::SEMICOLON)
             return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrNoSemicolon);
-        if(isInitializedVariable(std::any_cast<std::string>(vara.value().GetValue()))==false)
+        if(isInitializedVariable(vara.value().GetValueString())==false)
         addVariable(vara.value());
-		_instructions.emplace_back(Operation::STO,getIndex(std::any_cast<std::string>(vara.value().GetValue())));
+		_instructions.emplace_back(Operation::STO,getIndex(vara.value().GetValueString()));
 		// 标识符声明过吗？
 		// 标识符是常量吗？
 		// 需要生成指令吗？
@@ -391,10 +389,12 @@ namespace miniplc0 {
 			return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrIncompleteExpression);
 		switch (next.value().GetType()) {
             case TokenType ::IDENTIFIER: {
-                if(isInitializedVariable(std::any_cast<std::string>(next.value().GetValue()))==false&&isConstant(std::any_cast<std::string>(next.value().GetValue()))==false)
+                if(isDeclared(next.value().GetValueString())==false)
+                    return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrNotDeclared);
+                else if(isInitializedVariable(next.value().GetValueString())==false&&isConstant(next.value().GetValueString())==false)
                     return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrNotInitialized);
                 _instructions.emplace_back(Operation::LOD,
-                                           getIndex(std::any_cast<std::string>(next.value().GetValue())));
+                                           getIndex(next.value().GetValueString()));
                 break;
             }
             case TokenType ::UNSIGNED_INTEGER:
