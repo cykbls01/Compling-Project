@@ -18,18 +18,21 @@ namespace miniplc0 {
     //    {<variable-declaration>}{<function-definition>}
 	std::optional<CompilationError> Analyser::analyseProgram() {
 
-        AddFunc(func);
+        AddFunc(func);//增加全局函数
         // {<variable-declaration>} 循环体去里面处理
 
-		auto var = analyseVariableDeclaration();
+		auto var = analyseVariableDeclaration();//全局变量声明
 		if (var.has_value())
 			return var;
 
         // {<function-definition>} 循环体去里面处理
-		auto func=analyseFunctionDefinition();
+		auto func=analyseFunctionDefinition();//函数声明
 		if(func.has_value())
 		    return func;
-		BianLi();
+		if(check()==false)
+            return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrorNeedMain);
+		bianli();
+
 
 		return {};
 	}
@@ -46,13 +49,13 @@ namespace miniplc0 {
             auto next = nextToken();
             if(!next.has_value())
                 return {};
-            bool biaoji=true; //有const，必须有int
+            bool biaoji=true;
             type="const";
             if(next.value().GetType()!=TokenType::CONST) {
                 biaoji=false;
                 unreadToken();
                 type="int";
-            }
+            }//判断是不是const
 
             // <type-specifier>
             next=nextToken();
@@ -61,9 +64,10 @@ namespace miniplc0 {
                     unreadToken();
                     return {};
                 }
-                else
+                else//有const，必须包含int
                     return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrNeedInt);
             }
+            //函数和标识符区分一下
             next=nextToken();
             next=nextToken();
             if(next.has_value()&&next.value().GetType()==TokenType::LEFT_SMALL_BRACKET)
@@ -118,7 +122,7 @@ namespace miniplc0 {
             {
 	            unreadToken();
 	            return{};
-            }
+            }//不是逗号，跳出循环
 	        // <init-declarator>
 
             init=analyseInitDeclarator();
@@ -136,23 +140,29 @@ namespace miniplc0 {
 	    auto next=nextToken();
 	    if(!next.has_value()||next.value().GetType()!=TokenType::IDENTIFIER)
             return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrNeedIdentifier);
-	    Symbol symbol;
-	    symbol.name=next.value().GetValueString();
-        if(AddIden(symbol)==false)
-            return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrDuplicateDeclaration);
 
+        Symbol symbol;
+        symbol.name=next.value().GetValueString();
 
 
 	    // '='
 	    next=nextToken();
+	    init=true;
         if(!next.has_value()||next.value().GetType()!=TokenType::EQUAL)
         {
+            if(type=="const")
+                return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrNotInitialized);
 
             unreadToken();
-            //ins[func].push_back("loada 0,"+std::to_string(FindIdenInt(symbol)));
+            init=false;
+
+            if(AddIden(symbol)==false)
+                return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrDuplicateDeclaration);
             ins[func].push_back("ipush 0");
             return {};
         }
+        if(AddIden(symbol)==false)
+            return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrDuplicateDeclaration);
         // <expression>
         auto expr=analyseExpression();
         if(expr.has_value())
@@ -169,6 +179,7 @@ namespace miniplc0 {
 
 	    while(true)
         {
+	        function_size=0;
 
 	        // <type-specifier>
             auto next=nextToken();
@@ -224,6 +235,12 @@ namespace miniplc0 {
             auto error=analyseCompoundStatement();
             if(error.has_value())
                 return error;
+
+            ins[func].push_back("ipop");
+            if(fanhui=="int")
+                ins[func].push_back("ipush 1");
+            ins[func].push_back("ret");
+            fts[func]=function_size;
             func=" ";
 
 
@@ -235,10 +252,11 @@ namespace miniplc0 {
     std::optional<CompilationError> Analyser::analyseParameterDeclaration(){
 	    // [<const-qualifier>]
 	    auto next=nextToken();
-
+        type="const";
 	    if(!next.has_value()||next.value().GetType()!=TokenType::CONST)
         {
 	        unreadToken();
+            type="int";
 
         }
 
@@ -271,6 +289,7 @@ namespace miniplc0 {
     //    <parameter-declaration>{','<parameter-declaration>}
     std::optional<CompilationError> Analyser::analyseParameterDeclarationList(){
 	    // <parameter-declaration>
+	    function_size++;
 	    auto error=analyseParameterDeclaration();
         if(error.has_value())
             return error;
@@ -287,6 +306,7 @@ namespace miniplc0 {
             error=analyseParameterDeclaration();
             if(error.has_value())
                 return error;
+            function_size++;
         }
         return {};
 	}
@@ -368,6 +388,12 @@ namespace miniplc0 {
             ins[func].push_back("icmp");
             ins[func].push_back("ifbegin"+aaa);
         }
+        else
+        {
+            ins[func].push_back("push 0");
+            ins[func].push_back("icmp");
+            ins[func].push_back("ifbegin!=");
+        }
         // ')'
         next=nextToken();
         if(!next.has_value()||next.value().GetType()!=TokenType::RIGHT_SMALL_BRACKET)
@@ -438,6 +464,12 @@ namespace miniplc0 {
             ins[func].push_back("icmp");
             ins[func].push_back("whilebegin"+aaa);
         }
+        else
+        {
+            ins[func].push_back("push 0");
+            ins[func].push_back("icmp");
+            ins[func].push_back("whilebegin!=");
+        }
         // ')'
 
 
@@ -466,10 +498,14 @@ namespace miniplc0 {
 
         // ';'
         if(!next.has_value()||next.value().GetType()==TokenType::SEMICOLON) {
+            if(fanhui=="int")
+                return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrorReturn);
             ins[func].push_back("ipop");
             ins[func].push_back("ret");
             return {};
         }
+        if(fanhui=="void")
+            return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrorReturn);
         unreadToken();
         // [<expression>]
         auto error=analyseExpression();
@@ -505,14 +541,19 @@ namespace miniplc0 {
         Symbol symbol;
         symbol.name=next.value().GetValueString();
 
-        if(FindIden(symbol)==true)
+
+        if(st[func].find(symbol.name)!=st[func].end())
         {
-            ins[func].push_back("loada 0,"+std::to_string(FindIdenInt(symbol)));
+            if(st[func][symbol.name].type=="const")
+                return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrAssignToConstant);
+            ins[func].push_back("loada 0,"+std::to_string(st[func][symbol.name].xiabiao));
 
         }
-        else if(FindQuanJuIden(symbol)== true)
+        else if(st[" "].find(symbol.name)!=st[" "].end())
         {
-            ins[func].push_back("loada 1,"+std::to_string(FindQuanJuIdenInt(symbol)));
+            if(st[" "][symbol.name].type=="const")
+                return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrAssignToConstant);
+            ins[func].push_back("loada 1,"+std::to_string(st[" "][symbol.name].xiabiao));
 
         }
         else return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrNotDeclared);
@@ -595,17 +636,30 @@ namespace miniplc0 {
             return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrNeedIdentifier);
 	    Symbol symbol;
 	    symbol.name=next.value().GetValueString();
-        if(FindIden(symbol)==true)
+        int i;
+        std::string ttt;
+        if(st[func].find(symbol.name)!=st[func].end())
         {
-            ins[func].push_back("loada 0,"+std::to_string(FindIdenInt(symbol)));
+            ttt="feiquanju";
+
+            if(st[func][symbol.name].type=="const")
+                return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrAssignToConstant);
+            ins[func].push_back("loada 0,"+std::to_string(st[func][symbol.name].xiabiao));
 
         }
-        else if(FindQuanJuIden(symbol)== true)
+        else if(st[" "].find(symbol.type)!=st[" "].end())
         {
-            ins[func].push_back("loada 1,"+std::to_string(FindQuanJuIdenInt(symbol)));
+
+            ttt="quanju";
+
+
+            if(st[" "][symbol.name].type=="const")
+                return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrAssignToConstant);
+            ins[func].push_back("loada 1,"+std::to_string(st[" "][symbol.name].xiabiao));
 
         }
         else return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrNotDeclared);
+
 
 
 
@@ -622,6 +676,10 @@ namespace miniplc0 {
         if(error.has_value())
             return error;
         ins[func].push_back("istore");
+        if(ttt=="feiquanju")
+        st[func][symbol.name].init=true;
+        else if(ttt=="quanju")
+        st[" "][symbol.name].init=true;
 
         return {};
 	}
@@ -675,15 +733,22 @@ namespace miniplc0 {
             {
                 unreadToken();
                 Symbol symbol;
+                int i;
                 symbol.name=name;
-                if(FindIden(symbol)==true)
+                if(st[func].find(symbol.name)!=st[func].end())
                 {
-                    ins[func].push_back("loada 0,"+std::to_string(FindIdenInt(symbol)));
+
+                    if(st[func][symbol.name].init==false)
+                        return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrNotInitialized);
+                    ins[func].push_back("loada 0,"+std::to_string(st[func][symbol.name].xiabiao));
                     ins[func].push_back("iload");
                 }
-                else if(FindQuanJuIden(symbol)== true)
+                else if(st[" "].find(symbol.name)!=st[" "].end())
                 {
-                    ins[func].push_back("loada 1,"+std::to_string(FindQuanJuIdenInt(symbol)));
+
+                    if(st[func][symbol.name].init== false)
+                        return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrNotInitialized);
+                    ins[func].push_back("loada 1,"+std::to_string(st[func][symbol.name].xiabiao));
                     ins[func].push_back("iload");
                 }
                 else return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrNotDeclared);
@@ -793,7 +858,7 @@ namespace miniplc0 {
 	    if(!next.has_value()||next.value().GetType()!=TokenType::IDENTIFIER)
             return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrNeedIdentifier);
 	    int aaa=FindFunc(next.value().GetValueString());
-
+        std::string namef=next.value().GetValueString();
 
 	    next=nextToken();
 	    // '('
@@ -805,6 +870,7 @@ namespace miniplc0 {
         if(!next.has_value()||next.value().GetType()!=TokenType::RIGHT_SMALL_BRACKET)
         {
             // [<expression-list>]
+            function_size=1;
             auto error=analyseExpression();
             if(error.has_value())
                 return error;
@@ -819,6 +885,7 @@ namespace miniplc0 {
                 error=analyseExpression();
                 if(error.has_value())
                     return error;
+                function_size++;
             }
 
         }
@@ -830,6 +897,9 @@ namespace miniplc0 {
         // ')'
         if(!next.has_value()||next.value().GetType()!=TokenType::RIGHT_SMALL_BRACKET)
             return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrorNeedBracket);
+        if(function_size!=fts[namef])
+            return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrorWrongPara);
+
         return{};
 
 
@@ -1121,7 +1191,7 @@ namespace miniplc0 {
 	    else
         {
 
-	        std::vector<Symbol> vt;
+	        std::map<std::string,Symbol> vt;
 	        st[name]=vt;
 	        ft.push_back(name);
 
@@ -1132,74 +1202,21 @@ namespace miniplc0 {
 	bool Analyser::AddIden(miniplc0::Symbol symbol) {
 
 	    int i;
-	    for(i=0;i<st[func].size();i++)
-        {
-	        if(st[func][i].name==symbol.name)
-            {
-	            return false;
-            }
-        }
+	    if(st[func].find(symbol.name)!=st[func].end())
+	        return false;
 	    symbol.level=st[func].size();
 	    symbol.index=index;
 	    symbol.func=func;
-        st[func].push_back(symbol);
-
-
+	    symbol.init=init;
+	    symbol.type=type;
+	    symbol.xiabiao=st[func].size();
+	    st[func][symbol.name]=symbol;
 	    return true;
 
 	}
-	bool Analyser::FindIden(miniplc0::Symbol symbol) {
-        int i;
-        for(i=0;i<st[func].size();i++)
-        {
-            if(st[func][i].name==symbol.name)
-            {
-                return true;
-            }
-        }
-        return false;
 
 
-	}
-    bool Analyser::FindQuanJuIden(miniplc0::Symbol symbol) {
-        int i;
-        for(i=0;i<st[" "].size();i++)
-        {
-            if(st[" "][i].name==symbol.name)
-            {
-                return true;
-            }
-        }
-        return false;
 
-
-    }
-
-    int Analyser::FindIdenInt(miniplc0::Symbol symbol) {
-        int i;
-        for(i=0;i<st[func].size();i++)
-        {
-            if(st[func][i].name==symbol.name)
-            {
-                return i;
-            }
-        }
-        return 0;
-
-	}
-
-    int Analyser::FindQuanJuIdenInt(miniplc0::Symbol symbol) {
-        int i;
-        for(i=0;i<st[" "].size();i++)
-        {
-            if(st[" "][i].name==symbol.name)
-            {
-                return i;
-            }
-        }
-        return 0;
-
-    }
     int Analyser::FindFunc(std::string name) {
 	    int i;
         for(i=0;i<ft.size();i++)
@@ -1215,37 +1232,7 @@ namespace miniplc0 {
 
 
 	}
-	void Analyser::BianLi() {
-	    int i,j;
-	    for(i=0;i<ft.size();i++)
-        {
-	        printf("%s\n",ft[i].c_str());
-	        for(j=0;j<st[ft[i]].size();j++)
-            {
 
-	            printf("%s %s %d %d\n",st[ft[i]][j].name.c_str(),st[ft[i]][j].func.c_str(),st[ft[i]][j].index,st[ft[i]][j].level);
-
-            }
-
-
-
-        }
-
-        for(i=0;i<ft.size();i++)
-        {
-            printf("#%s\n",ft[i].c_str());
-            for(j=0;j<ins[ft[i]].size();j++)
-            {
-                printf("%d %s\n",j,ins[ft[i]][j].c_str());
-            }
-
-
-
-        }
-
-
-
-	}
 	void Analyser::AddWhile() {
 	    int i;
 	    for(i=ins[func].size();i>=0;i--)
@@ -1335,6 +1322,43 @@ namespace miniplc0 {
 
 
     }
+
+    void Analyser::bianli() {
+
+	    int i=0;
+	    for(i=0;i<ft.size();i++)
+        {
+	        for(int j=0;j<ins[ft[i]].size();j++)
+            {
+	            printf("%d %s\n",j,ins[ft[i]][j].c_str());
+
+
+            }
+
+
+
+        }
+
+
+
+
+
+	}
+
+	bool Analyser::check() {
+	    int i=0;
+	    for(i=0;i<ft.size();i++)
+        {
+	        if(ft[i]=="main")
+	            return true;
+
+
+        }
+	    return false;
+
+
+	}
+
 
 
 

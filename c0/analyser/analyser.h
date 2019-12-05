@@ -20,9 +20,11 @@ namespace miniplc0 {
         std::string name;
         std::any value;
         std::string type;
+        bool init;
         int index;
         int level;
         std::string func;
+        int xiabiao;
 
     };
 
@@ -35,8 +37,11 @@ namespace miniplc0 {
         std::string fanhui;
         int level=0;
         int index=0;
-        std::map<std::string,std::vector<Symbol>> st;
+        int function_size;
+        bool init;
+        std::map<std::string,std::map<std::string,Symbol>> st;
         std::vector<std::string> ft;
+        std::map<std::string,int> fts;
         std::map<std::string,std::vector<std::string>> ins;
         int biaoji;
 
@@ -59,12 +64,8 @@ namespace miniplc0 {
 		bool AddIden(Symbol symbol);
 		void AddWhile();
         void AddIf();
-		bool FindIden(Symbol symbol);
-		bool FindQuanJuIden(Symbol symbol);
-		void BianLi();
-
-        int FindIdenInt(Symbol symbol);
-        int FindQuanJuIdenInt(Symbol symbol);
+        void bianli();
+        bool check();
         int FindFunc(std::string name);
 
 		// 唯一接口

@@ -23,7 +23,7 @@ void Tokenize(std::istream& input, std::ostream& output) {
 	for (auto& it : v) {
 
         output << fmt::format("{}\n", it);
-        printf("%d\n",it.GetType());
+printf("%d\n",it.GetType());
 
 
     }

@@ -45,6 +45,9 @@ namespace miniplc0 {
 		ErrorNeedPrint,
 		ErrorNeedReturn,
 		ErrorNeedEqual,
+		ErrorNeedMain,
+		ErrorReturn,
+		ErrorWrongPara,
 	};
 
 	class CompilationError final{

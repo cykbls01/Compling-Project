@@ -93,7 +93,15 @@ namespace fmt {
 				case miniplc0::ErrNeedInt:
 				    name="YOU NEED USE INT";
 				    break;
-
+                case miniplc0::ErrorNeedMain:
+                    name="YOU NEED USE MAIN";
+                    break;
+                case miniplc0::ErrorReturn:
+                    name="YOU NEED USE WRONG RETURN";
+                    break;
+                case miniplc0::ErrorWrongPara:
+                    name="YOU NEED USE EQUAL PARA NUMBER";
+                    break;
 
 
 			}

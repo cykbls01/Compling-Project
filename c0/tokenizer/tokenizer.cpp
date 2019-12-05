@@ -170,12 +170,16 @@ namespace miniplc0 {
                             ss << current_char.value();
 
                         }
-                        else
-                            return std::make_pair(std::make_optional<Token>(TokenType::INTEGER,0,pos,currentPos()),std::optional<CompilationError>());
+                        else {
+                            unreadLast();
+                            return std::make_pair(std::make_optional<Token>(TokenType::INTEGER, 0, pos, currentPos()),
+                                                  std::optional<CompilationError>());
 
+                        }
                     }
                     else if(isnozerodigit(ch))
                     {
+
                         current_state=Integer_STATE;
 
                     }
@@ -319,6 +323,9 @@ namespace miniplc0 {
                         long long int num=0;
                         ss >> sss;
                         const char *c=sss.c_str();
+                        if(c[2]=='\0')
+                            return std::make_pair(std::optional<Token>(), std::make_optional<CompilationError>(pos,ErrorCode::ErrIntegerOverflow));
+
                         int i=0;
                         for(i=2;c[i]!='\0';i++)
                         {
@@ -424,6 +431,8 @@ namespace miniplc0 {
                         long long int num=0;
                         ss >> sss;
                         const char *c=sss.c_str();
+                        if(c[2]=='\0')
+                            return std::make_pair(std::optional<Token>(), std::make_optional<CompilationError>(pos,ErrorCode::ErrIntegerOverflow));
                         int i=0;
                         for(i=2;c[i]!='\0';i++) {
                             int a;
