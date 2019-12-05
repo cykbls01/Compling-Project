@@ -2,12 +2,12 @@
 //#include "symbol.h"
 
 #include <climits>
-
+#include <3rd_party/fmt/include/fmt/format.h>
 
 
 namespace miniplc0 {
-	std::pair<std::vector<Instruction>, std::optional<CompilationError>> Analyser::Analyse() {
-		auto err = analyseProgram();
+	std::pair<std::vector<Instruction>, std::optional<CompilationError>> Analyser::Analyse( std::ostream& output) {
+		auto err = analyseProgram(output);
 		if (err.has_value())
 			return std::make_pair(std::vector<Instruction>(), err);
 		else
@@ -16,7 +16,7 @@ namespace miniplc0 {
 
 	// <C0-program> ::=
     //    {<variable-declaration>}{<function-definition>}
-	std::optional<CompilationError> Analyser::analyseProgram() {
+	std::optional<CompilationError> Analyser::analyseProgram( std::ostream& output) {
 
         AddFunc(func);//增加全局函数
         // {<variable-declaration>} 循环体去里面处理
@@ -31,7 +31,7 @@ namespace miniplc0 {
 		    return func;
 		if(check()==false)
             return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrorNeedMain);
-		bianli();
+		bianli(output);
 
 
 		return {};
@@ -230,7 +230,9 @@ namespace miniplc0 {
             next=nextToken();
             if(!next.has_value()||next.value().GetType()!=TokenType::RIGHT_SMALL_BRACKET)
                 return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrorNeedBracket);
+            fts[func]=function_size;
 
+            function_size=0;
             // <compound-statement>
             auto error=analyseCompoundStatement();
             if(error.has_value())
@@ -240,7 +242,7 @@ namespace miniplc0 {
             if(fanhui=="int")
                 ins[func].push_back("ipush 1");
             ins[func].push_back("ret");
-            fts[func]=function_size;
+
             func=" ";
 
 
@@ -1323,21 +1325,46 @@ namespace miniplc0 {
 
     }
 
-    void Analyser::bianli() {
+    void Analyser::bianli( std::ostream& output) {
 
-	    int i=0;
-	    for(i=0;i<ft.size();i++)
+        output << fmt::format(".constants:\n");
+        for(int i=1;i<ft.size();i++)
         {
-	        for(int j=0;j<ins[ft[i]].size();j++)
-            {
-	            printf("%d %s\n",j,ins[ft[i]][j].c_str());
-
-
-            }
-
+            std::string aaa=std::to_string(i-1)+" S "+"\""+ft[i]+"\"";
+            output <<fmt::format("{}\n",aaa);
 
 
         }
+
+        output << fmt::format(".start:\n");
+        for(int i=0;i<ins[" "].size();i++)
+        {
+            std::string aaa=std::to_string(i)+"    "+ins[" "][i];
+            output <<fmt::format("{}\n",aaa);
+
+
+        }
+
+        output << fmt::format(".functions:\n");
+        for(int i=1;i<ft.size();i++)
+        {
+            std::string aaa=std::to_string(i-1)+" "+std::to_string(i-1)+" "+std::to_string(fts[ft[i]])+" 1";
+            output <<fmt::format("{}\n",aaa);
+
+        }
+
+        for(int i=1;i<ft.size();i++)
+        {
+            std::string aaa=".F"+std::to_string(i-1);
+            output <<fmt::format("{}\n",aaa);
+            for(int j=0;j<ins[ft[i]].size();j++)
+            {
+                std::string bbb=std::to_string(j)+"    "+ins[ft[i]][j];
+                output <<fmt::format("{}\n",bbb);
+            }
+
+        }
+
 
 
 

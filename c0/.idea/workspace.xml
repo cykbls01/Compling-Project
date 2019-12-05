@@ -34,8 +34,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="25" column="26" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
+            <state relative-caret-position="224">
+              <caret line="34" column="20" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="20" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -43,11 +43,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fmts.hpp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="371">
-              <caret line="98" column="43" lean-forward="true" selection-start-line="98" selection-start-column="43" selection-end-line="98" selection-end-column="43" />
+              <caret line="98" column="43" selection-start-line="98" selection-start-column="43" selection-end-line="98" selection-end-column="43" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
@@ -58,8 +58,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/analyser/analyser.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="39" column="26" selection-start-line="39" selection-start-column="26" selection-end-line="39" selection-end-column="26" />
+            <state relative-caret-position="933">
+              <caret line="71" column="106" selection-start-line="71" selection-start-column="106" selection-end-line="71" selection-end-column="106" />
               <folding>
                 <element signature="e#14#38#0" expanded="true" />
               </folding>
@@ -67,11 +67,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/1.plc0">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="9" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
+            <state relative-caret-position="135">
+              <caret line="9" column="12" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -79,8 +79,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/instruction/instruction.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+            <state relative-caret-position="210">
+              <caret line="15" column="12" lean-forward="true" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -88,8 +88,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/analyser/analyser.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="413">
-              <caret line="900" column="95" selection-start-line="900" selection-start-column="95" selection-end-line="900" selection-end-column="95" />
+            <state relative-caret-position="106">
+              <caret line="234" column="28" selection-start-line="234" selection-start-column="28" selection-end-line="234" selection-end-column="28" />
+              <folding>
+                <element signature="e#45#63#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -141,19 +144,19 @@
         <option value="$PROJECT_DIR$/analyser/symbol.h" />
         <option value="$PROJECT_DIR$/instruction/instruction.h" />
         <option value="$PROJECT_DIR$/tokenizer/tokenizer.cpp" />
-        <option value="$PROJECT_DIR$/main.cpp" />
-        <option value="$PROJECT_DIR$/analyser/analyser.h" />
-        <option value="$PROJECT_DIR$/1.plc0" />
         <option value="$PROJECT_DIR$/error/error.h" />
-        <option value="$PROJECT_DIR$/analyser/analyser.cpp" />
         <option value="$PROJECT_DIR$/fmts.hpp" />
+        <option value="$PROJECT_DIR$/analyser/analyser.h" />
+        <option value="$PROJECT_DIR$/main.cpp" />
+        <option value="$PROJECT_DIR$/1.plc0" />
+        <option value="$PROJECT_DIR$/analyser/analyser.cpp" />
       </list>
     </option>
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="602" />
-    <option name="y" value="23" />
+    <option name="x" value="654" />
+    <option name="y" value="110" />
     <option name="width" value="1390" />
     <option name="height" value="877" />
   </component>
@@ -270,15 +273,15 @@
       <workItem from="1575375985096" duration="5818000" />
       <workItem from="1575436460552" duration="4834000" />
       <workItem from="1575457334394" duration="2005000" />
-      <workItem from="1575524459017" duration="3859000" />
+      <workItem from="1575524459017" duration="5910000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="68573000" />
+    <option name="totallyTimeSpent" value="70624000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="50" y="23" width="1390" height="877" extended-state="6" />
+    <frame x="654" y="110" width="1390" height="877" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.84126985" visible="true" weight="0.20474778" />
@@ -364,23 +367,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="25" column="26" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/instruction/instruction.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tokenizer/token.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-157">
@@ -401,13 +387,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/1.plc0">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="9" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/error/error.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="401">
@@ -418,10 +397,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/fmts.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="98" column="43" selection-start-line="98" selection-start-column="43" selection-end-line="98" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="34" column="20" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/instruction/instruction.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="15" column="12" lean-forward="true" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/analyser/analyser.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="39" column="26" selection-start-line="39" selection-start-column="26" selection-end-line="39" selection-end-column="26" />
+        <state relative-caret-position="933">
+          <caret line="71" column="106" selection-start-line="71" selection-start-column="106" selection-end-line="71" selection-end-column="106" />
           <folding>
             <element signature="e#14#38#0" expanded="true" />
           </folding>
@@ -430,18 +436,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/analyser/analyser.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="900" column="95" selection-start-line="900" selection-start-column="95" selection-end-line="900" selection-end-column="95" />
+        <state relative-caret-position="106">
+          <caret line="234" column="28" selection-start-line="234" selection-start-column="28" selection-end-line="234" selection-end-column="28" />
+          <folding>
+            <element signature="e#45#63#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fmts.hpp">
+    <entry file="file://$PROJECT_DIR$/1.plc0">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="98" column="43" lean-forward="true" selection-start-line="98" selection-start-column="43" selection-end-line="98" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="135">
+          <caret line="9" column="12" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
         </state>
       </provider>
     </entry>

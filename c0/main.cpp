@@ -23,7 +23,7 @@ void Tokenize(std::istream& input, std::ostream& output) {
 	for (auto& it : v) {
 
         output << fmt::format("{}\n", it);
-printf("%d\n",it.GetType());
+        printf("%d\n",it.GetType());
 
 
     }
@@ -33,7 +33,7 @@ printf("%d\n",it.GetType());
 void Analyse(std::istream& input, std::ostream& output){
 	auto tks = _tokenize(input);
 	miniplc0::Analyser analyser(tks);
-	auto p = analyser.Analyse();
+	auto p = analyser.Analyse(output);
 	if (p.second.has_value()) {
 		fmt::print(stderr, "Syntactic analysis error: {}\n", p.second.value());
 		exit(2);

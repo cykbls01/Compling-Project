@@ -64,17 +64,17 @@ namespace miniplc0 {
 		bool AddIden(Symbol symbol);
 		void AddWhile();
         void AddIf();
-        void bianli();
+        void bianli( std::ostream& output);
         bool check();
         int FindFunc(std::string name);
 
 		// 唯一接口
-		std::pair<std::vector<Instruction>, std::optional<CompilationError>> Analyse();
+		std::pair<std::vector<Instruction>, std::optional<CompilationError>> Analyse( std::ostream& output);
 	private:
 		// 所有的递归子程序
 
 		// <程序>
-		std::optional<CompilationError> analyseProgram();
+		std::optional<CompilationError> analyseProgram( std::ostream& output);
 
 		// <变量声明>
 		std::optional<CompilationError> analyseVariableDeclaration();
