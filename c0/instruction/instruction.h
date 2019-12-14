@@ -15,7 +15,7 @@ namespace miniplc0 {
 		MUL,
 		DIV,
 		WRT,
-		LOADA,
+
 	};
 	
 	class Instruction final {

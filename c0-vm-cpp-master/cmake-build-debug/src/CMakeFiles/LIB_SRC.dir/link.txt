@@ -1,0 +1,2 @@
+/Library/Developer/CommandLineTools/usr/bin/ar qc libLIB_SRC.a  CMakeFiles/LIB_SRC.dir/file.cpp.o CMakeFiles/LIB_SRC.dir/vm.cpp.o
+/Library/Developer/CommandLineTools/usr/bin/ranlib libLIB_SRC.a

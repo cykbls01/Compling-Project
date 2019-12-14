@@ -192,6 +192,13 @@ namespace fmt {
 			case miniplc0::RIGHT_BRACKET:
 				name = "RightBracket";
 				break;
+                case miniplc0::CHAR:
+                    name = "CHAR";
+                    break;
+                case miniplc0::STRING:
+                    name = "STRING";
+                    break;
+
 			}
 			return format_to(ctx.out(), name);
 		}

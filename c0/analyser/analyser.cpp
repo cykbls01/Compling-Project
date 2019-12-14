@@ -3,20 +3,22 @@
 
 #include <climits>
 #include <3rd_party/fmt/include/fmt/format.h>
+#include <sstream>
 
 
 namespace miniplc0 {
-	std::pair<std::vector<Instruction>, std::optional<CompilationError>> Analyser::Analyse( std::ostream& output) {
-		auto err = analyseProgram(output);
-		if (err.has_value())
-			return std::make_pair(std::vector<Instruction>(), err);
+	std::pair<std::vector<Instruction>, std::optional<CompilationError>> Analyser::Analyse( std::ostream& output,char status) {
+		auto err = analyseProgram(output,status);
+		if (err.has_value()) {
+            return std::make_pair(std::vector<Instruction>(), err);
+        }
 		else
 			return std::make_pair(_instructions, std::optional<CompilationError>());
 	}
 
 	// <C0-program> ::=
     //    {<variable-declaration>}{<function-definition>}
-	std::optional<CompilationError> Analyser::analyseProgram( std::ostream& output) {
+	std::optional<CompilationError> Analyser::analyseProgram( std::ostream& output,char status) {
 
         AddFunc(func);//增加全局函数
         // {<variable-declaration>} 循环体去里面处理
@@ -31,7 +33,10 @@ namespace miniplc0 {
 		    return func;
 		if(check()==false)
             return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrorNeedMain);
-		bianli(output);
+		if(status=='c')
+		    bianli(output);
+		else
+		    bianli1(output);
 
 
 		return {};
@@ -147,7 +152,7 @@ namespace miniplc0 {
 
 	    // '='
 	    next=nextToken();
-	    init=true;
+
         if(!next.has_value()||next.value().GetType()!=TokenType::EQUAL)
         {
             if(type=="const")
@@ -158,15 +163,21 @@ namespace miniplc0 {
 
             if(AddIden(symbol)==false)
                 return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrDuplicateDeclaration);
+
             ins[func].push_back("ipush 0");
+
+
             return {};
         }
-        if(AddIden(symbol)==false)
-            return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrDuplicateDeclaration);
+
         // <expression>
         auto expr=analyseExpression();
         if(expr.has_value())
             return expr;
+        init=true;
+        if(AddIden(symbol)==false)
+            return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrDuplicateDeclaration);
+
         return {};
         
 	}
@@ -207,6 +218,7 @@ namespace miniplc0 {
                 return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrDuplicateDeclaration);
             }
             func=next.value().GetValueString();
+            ftt[func]=fanhui;
 
 
 
@@ -238,10 +250,17 @@ namespace miniplc0 {
             if(error.has_value())
                 return error;
 
-            ins[func].push_back("ipop");
-            if(fanhui=="int")
+            //ins[func].push_back("pop");
+
+
+            if(fanhui=="int") {
                 ins[func].push_back("ipush 1");
+                ins[func].push_back("iret");
+
+            }
+            else
             ins[func].push_back("ret");
+
 
             func=" ";
 
@@ -383,6 +402,8 @@ namespace miniplc0 {
             ||next.value().GetType()==TokenType::GREATER_EQUAL||next.value().GetType()==TokenType::NO_EQUAL||next.value().GetType()==TokenType::EQUAL_EQUAL))
         {
             std::string aaa=next.value().GetValueString();
+            if(next.value().GetType()==TokenType::GREATER_EQUAL||next.value().GetType()==TokenType::LESS_EQUAL||next.value().GetType()==TokenType::NO_EQUAL||next.value().GetType()==TokenType::EQUAL_EQUAL)
+                aaa=aaa+"=";
             next=nextToken();
             error=analyseExpression();
             if(error.has_value())
@@ -392,7 +413,7 @@ namespace miniplc0 {
         }
         else
         {
-            ins[func].push_back("push 0");
+            ins[func].push_back("ipush 0");
             ins[func].push_back("icmp");
             ins[func].push_back("ifbegin!=");
         }
@@ -416,19 +437,23 @@ namespace miniplc0 {
         }
         ins[func].push_back("jump?");
         AddIf();
+
         // <statement>
         error=analyseStatement();
         if(error.has_value())
             return error;
+
+
         int i=0;
         for(i=ins[func].size()-1;i>=0;i--)
         {
             if(ins[func][i]=="jump?") {
-                ins[func][i] = "jump " + std::to_string(ins[func].size());
+                ins[func][i] = "jmp " + std::to_string(ins[func].size());
             break;
 
             }
         }
+
 
         return {};
 	}
@@ -457,6 +482,9 @@ namespace miniplc0 {
                               ||next.value().GetType()==TokenType::GREATER_EQUAL||next.value().GetType()==TokenType::NO_EQUAL||next.value().GetType()==TokenType::EQUAL_EQUAL))
         {
             std::string aaa=next.value().GetValueString();
+            if(next.value().GetType()==TokenType::GREATER_EQUAL||next.value().GetType()==TokenType::LESS_EQUAL||next.value().GetType()==TokenType::NO_EQUAL||next.value().GetType()==TokenType::EQUAL_EQUAL)
+                aaa=aaa+"=";
+
             next=nextToken();
 
             error=analyseExpression();
@@ -468,7 +496,7 @@ namespace miniplc0 {
         }
         else
         {
-            ins[func].push_back("push 0");
+            ins[func].push_back("ipush 0");
             ins[func].push_back("icmp");
             ins[func].push_back("whilebegin!=");
         }
@@ -482,7 +510,7 @@ namespace miniplc0 {
         error=analyseStatement();
         if(error.has_value())
             return error;
-        ins[func].push_back("jump "+std::to_string(biaoji));
+        ins[func].push_back("jmp "+std::to_string(biaoji));
         AddWhile();
         return {};
 	}
@@ -493,6 +521,7 @@ namespace miniplc0 {
     //    'return' [<expression>] ';'
     std::optional<CompilationError> Analyser::analyseJumpStatement() {
 	    // 'return'
+
         auto next=nextToken();
         if(!next.has_value()||next.value().GetType()!=TokenType::RETURN)
             return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrorNeedReturn);
@@ -548,14 +577,14 @@ namespace miniplc0 {
         {
             if(st[func][symbol.name].type=="const")
                 return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrAssignToConstant);
-            ins[func].push_back("loada 0,"+std::to_string(st[func][symbol.name].xiabiao));
+            ins[func].push_back("loada 0, "+std::to_string(st[func][symbol.name].xiabiao));
 
         }
         else if(st[" "].find(symbol.name)!=st[" "].end())
         {
             if(st[" "][symbol.name].type=="const")
                 return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrAssignToConstant);
-            ins[func].push_back("loada 1,"+std::to_string(st[" "][symbol.name].xiabiao));
+            ins[func].push_back("loada 1, "+std::to_string(st[" "][symbol.name].xiabiao));
 
         }
         else return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrNotDeclared);
@@ -594,30 +623,38 @@ namespace miniplc0 {
             return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrorNeedBracket);
         // [<printable-list>]
         next=nextToken();
-        unreadToken();
-        if(!next.has_value()||next.value().GetType()!=TokenType::RIGHT_SMALL_BRACKET)
+        if(next.value().GetType()==TokenType::CHAR)
         {
+            const char *c=next.value().GetValueString().c_str();
+            ins[func].push_back("bipush "+std::to_string(c[0]));
+            ins[func].push_back("cprint");
+        }
+        else if(next.value().GetType()==TokenType::STRING)
+        {
+            const char *c=next.value().GetValueString().c_str();
+            for(int i=0;c[i]!='\0';i++)
+            {
 
+                ins[func].push_back("bipush " + std::to_string(c[i]));
+                ins[func].push_back("cprint");
+
+            }
+
+
+        }
+        else {
             // <expression>
-            auto error=analyseExpression();
-            if(error.has_value())
+            unreadToken();
+            auto error = analyseExpression();
+            if (error.has_value())
                 return error;
             ins[func].push_back("iprint");
-            while(true)
-            {
-                // ','
-                next=nextToken();
-                if(!next.has_value()||next.value().GetType()!=TokenType::DOUHAO) {
-                    unreadToken();
-                    break;
-                }
-                // <expression>
-                auto error=analyseExpression();
-                if(error.has_value())
-                    return error;
-                ins[func].push_back("iprint");
-            }
+
         }
+        auto error=analysePrintAble();
+        if (error.has_value())
+            return error;
+
         // ')'
         next=nextToken();
         if(!next.has_value()||next.value().GetType()!=TokenType::RIGHT_SMALL_BRACKET)
@@ -626,7 +663,54 @@ namespace miniplc0 {
         next=nextToken();
         if(!next.has_value()||next.value().GetType()!=TokenType::SEMICOLON)
             return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrNoSemicolon);
+        ins[func].push_back("printl");
+
         return {};
+	}
+    std::optional<CompilationError> Analyser::analysePrintAble() {
+        while (true) {
+            // ','
+            auto next = nextToken();
+            if (!next.has_value() || next.value().GetType() != TokenType::DOUHAO) {
+                unreadToken();
+                return {};
+            }
+            ins[func].push_back("bipush "+std::to_string(32));
+            ins[func].push_back("cprint");
+            // <expression>
+            next = nextToken();
+            if (next.value().GetType() == TokenType::CHAR) {
+
+                const char *c=next.value().GetValueString().c_str();
+
+                ins[func].push_back("bipush "+std::to_string(c[0]));
+                ins[func].push_back("cprint");
+            } else if (next.value().GetType() == TokenType::STRING) {
+                const char *c = next.value().GetValueString().c_str();
+                for (int i = 0; c[i] != '\0'; i++) {
+
+                    ins[func].push_back("bipush " + std::to_string(c[i]));
+                    ins[func].push_back("cprint");
+
+                }
+
+
+
+
+
+            } else {
+                // <expression>
+                unreadToken();
+                auto error = analyseExpression();
+                if (error.has_value())
+                    return error;
+                ins[func].push_back("iprint");
+
+            }
+        }
+
+
+
 	}
 
     // <assignment-expression> ::=
@@ -646,10 +730,10 @@ namespace miniplc0 {
 
             if(st[func][symbol.name].type=="const")
                 return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrAssignToConstant);
-            ins[func].push_back("loada 0,"+std::to_string(st[func][symbol.name].xiabiao));
+            ins[func].push_back("loada 0, "+std::to_string(st[func][symbol.name].xiabiao));
 
         }
-        else if(st[" "].find(symbol.type)!=st[" "].end())
+        else if(st[" "].find(symbol.name)!=st[" "].end())
         {
 
             ttt="quanju";
@@ -657,7 +741,7 @@ namespace miniplc0 {
 
             if(st[" "][symbol.name].type=="const")
                 return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrAssignToConstant);
-            ins[func].push_back("loada 1,"+std::to_string(st[" "][symbol.name].xiabiao));
+            ins[func].push_back("loada 1, "+std::to_string(st[" "][symbol.name].xiabiao));
 
         }
         else return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrNotDeclared);
@@ -677,7 +761,9 @@ namespace miniplc0 {
         auto error=analyseExpression();
         if(error.has_value())
             return error;
+
         ins[func].push_back("istore");
+
         if(ttt=="feiquanju")
         st[func][symbol.name].init=true;
         else if(ttt=="quanju")
@@ -692,6 +778,7 @@ namespace miniplc0 {
 	    auto error=analyseAdditiveExpression();
         if(error.has_value())
             return error;
+
         return{};
 	}
 	// <primary-expression> ::=
@@ -725,6 +812,11 @@ namespace miniplc0 {
                 unreadToken();
                 unreadToken();
                 // <function-call>
+
+                next=nextToken();
+                unreadToken();
+                if(ftt[next.value().GetValueString()]=="void")
+                    return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrInvalidInput);
                 auto error=analyseFunctionCall();
                 if(error.has_value())
                     return error;
@@ -742,15 +834,15 @@ namespace miniplc0 {
 
                     if(st[func][symbol.name].init==false)
                         return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrNotInitialized);
-                    ins[func].push_back("loada 0,"+std::to_string(st[func][symbol.name].xiabiao));
+                    ins[func].push_back("loada 0, "+std::to_string(st[func][symbol.name].xiabiao));
                     ins[func].push_back("iload");
                 }
                 else if(st[" "].find(symbol.name)!=st[" "].end())
                 {
 
-                    if(st[func][symbol.name].init== false)
+                    if(st[" "][symbol.name].init== false)
                         return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrNotInitialized);
-                    ins[func].push_back("loada 1,"+std::to_string(st[func][symbol.name].xiabiao));
+                    ins[func].push_back("loada 1, "+std::to_string(st[func][symbol.name].xiabiao));
                     ins[func].push_back("iload");
                 }
                 else return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrNotDeclared);
@@ -894,7 +986,7 @@ namespace miniplc0 {
         if(aaa==0)
             return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrNotDeclared);
         else
-            ins[func].push_back("call("+std::to_string(aaa-1)+")");
+            ins[func].push_back("call "+std::to_string(aaa-1));
         next=nextToken();
         // ')'
         if(!next.has_value()||next.value().GetType()!=TokenType::RIGHT_SMALL_BRACKET)
@@ -927,7 +1019,9 @@ namespace miniplc0 {
 	    while(true)
         {
 
+
 	        auto next=nextToken();
+
 
             if(!next.has_value())
                 return {};
@@ -1060,6 +1154,7 @@ namespace miniplc0 {
     //    |';'
 	std::optional<CompilationError> Analyser::analyseStatement() {
         auto next=nextToken();
+
         if(!next.has_value())
             return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrInvalidInput);
 
@@ -1139,10 +1234,15 @@ namespace miniplc0 {
                 {
                     unreadToken();
                     unreadToken();
+
                     auto error=analyseAssignmentExpression();
                     if(error.has_value())
                         return error;
                 }
+                next=nextToken();
+                if(!next.has_value()||next.value().GetType()!=TokenType::SEMICOLON)
+                    return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrNoSemicolon);
+
                 break;
             }
             default:
@@ -1327,6 +1427,7 @@ namespace miniplc0 {
 
     void Analyser::bianli( std::ostream& output) {
 
+
         output << fmt::format(".constants:\n");
         for(int i=1;i<ft.size();i++)
         {
@@ -1356,7 +1457,8 @@ namespace miniplc0 {
         for(int i=1;i<ft.size();i++)
         {
             std::string aaa=".F"+std::to_string(i-1);
-            output <<fmt::format("{}\n",aaa);
+            output <<fmt::format("{}: ",aaa);
+            output <<fmt::format("#{}\n",ft[i]);
             for(int j=0;j<ins[ft[i]].size();j++)
             {
                 std::string bbb=std::to_string(j)+"    "+ins[ft[i]][j];
@@ -1372,6 +1474,345 @@ namespace miniplc0 {
 
 	}
 
+    void Analyser::bianli1( std::ostream& output) {
+        char bytes[8];
+        auto writeNBytes = [&](void * addr, int count) {
+            memset(bytes,'\0',sizeof(bytes));
+            assert(0 <= count && count <= 8);
+            char* p = reinterpret_cast<char*>(addr) + (count-1);
+
+            for (int i = 0; i < count; ++i) {
+                bytes[i] = *p--;
+            }
+            output.write(bytes, count);
+        };
+	    transfer();
+
+
+        output.write("\x43\x30\x3A\x29", 4);
+        output.write("\x00\x00\x00\x01", 4);
+        int constant=ft.size()-1;
+        writeNBytes(&constant,2);
+        //output << fmt::format("{:2x}",constant);
+        for(int i=1;i<=constant;i++)
+        {
+            int a=0x00;
+            writeNBytes(&a,1);
+            int sl=ft[i].size();
+            writeNBytes(&sl,2);
+            const char* c=ft[i].c_str();
+            std::string hexa;
+            output.write(ft[i].c_str(), sl);
+            /*for(int j=0;c[j]!='\0';j++)
+            {
+                output << fmt::format("{:x} ",std::stoi((to_hexa(c[j])).substr(3,2)));
+
+            }*/
+
+        }
+        constant=ins[" "].size();
+        writeNBytes(&constant,2);
+        for(int i=0;i<constant;i++)
+        {
+
+            if(inst[" "][i].a1!=-1)
+                writeNBytes(&inst[" "][i].a1,1);
+                //output << fmt::format("{:x} ",std::stoi((to_hexa(inst[" "][i].a1)).substr(3,2)));
+            int pianyi=2;
+            if(inst[" "][i].a1==2)
+                pianyi=4;
+            else if(inst[" "][i].a1==1)
+                pianyi=1;
+            if(inst[" "][i].a2!=-1)
+                writeNBytes(&inst[" "][i].a2,pianyi);
+            int dou=0x0000;
+            if(inst[" "][i].a1==10)
+                writeNBytes(&dou,2);
+                //output << fmt::format("{:x} ",std::stoi((to_hexa(inst[" "][i].a2))));
+            if(inst[" "][i].a3!=-1)
+                writeNBytes(&inst[" "][i].a3,pianyi);
+                //output << fmt::format("{:x} ",std::stoi((to_hexa(inst[" "][i].a3))));
+
+        }
+        constant=ft.size()-1;
+        writeNBytes(&constant,2);
+        for(int i=1;i<=constant;i++)
+        {
+            int p=i-1;
+            writeNBytes(&p,2);
+            p=fts[ft[i]];
+            writeNBytes(&p,2);
+            p=1;
+            writeNBytes(&p,2);
+
+           // output << fmt::format("{:x} ",std::stoi(to_hexa(i-1)));
+            //output << fmt::format("{:x} ",std::stoi(to_hexa(fts[ft[i]])));
+            //output << fmt::format("{:x} ",std::stoi(to_hexa(1)));
+
+            int t=ins[ft[i]].size();
+            writeNBytes(&t,2);
+
+
+            for(int j=0;j<inst[ft[i]].size();j++)
+            {
+
+
+                if(inst[ft[i]][j].a1!=-1) {
+
+
+                    writeNBytes(&(inst[ft[i]][j].a1), 1);
+                }
+
+                    int pianyi=2;
+                if(inst[ft[i]][j].a1==2)
+                    pianyi=4;
+                else if(inst[ft[i]][j].a1==1)
+                    pianyi=1;
+                if(inst[ft[i]][j].a2!=-1) {
+
+
+                    writeNBytes(&(inst[ft[i]][j].a2), pianyi);
+                }
+                    //output << fmt::format("{:x} ",std::stoi((to_hexa(inst[ft[i]][j].a2))));
+                //printf("ss %d\n",inst[ft[i]][j].a3);
+
+                int dou=0x0000;
+                if(inst[ft[i]][j].a1==10)
+                    writeNBytes(&dou,2);
+                if(inst[ft[i]][j].a3!=-1)
+                    writeNBytes(&(inst[ft[i]][j].a3),pianyi);
+                    //output << fmt::format("{:x} ",std::stoi((to_hexa(inst[ft[i]][j].a3))));
+            }
+
+
+
+
+
+        }
+
+
+
+
+	}
+    void Analyser::split(const std::string& s,std::vector<std::string>& sv) {
+        sv.clear();
+        std::istringstream iss(s);
+        std::string temp;
+        const char flag = ' ';
+        while (getline(iss, temp, flag)) {
+            sv.push_back(temp);
+        }
+        return;
+    }
+	void Analyser::transfer() {
+	    for(int i=0;i<ft.size();i++)
+        {
+	        std::vector<Instruct> vt;
+	        inst[ft[i]]=vt;
+	        for(int j=0;j<ins[ft[i]].size();j++)
+            {
+	            std::vector<std::string> s;
+	            split(ins[ft[i]][j],s);
+
+	            Instruct it;
+	            if(s.size()==1)
+                {
+	                it.a1=duihuan(s[0]);
+	                it.a2=-1;
+	                it.a3=-1;
+	                inst[ft[i]].push_back(it);
+                }
+	            else if(s.size()==2)
+                {
+                    it.a1=duihuan(s[0]);
+                    it.a2=atoi(s[1].c_str());
+                    it.a3=-1;
+                    inst[ft[i]].push_back(it);
+
+                }
+	            else if(s.size()==3)
+                {
+                    it.a1=duihuan(s[0]);
+                    const char* c=s[1].c_str();
+
+                    if(c[0]=='0')
+                    it.a2=0;
+                    else it.a2=1;
+
+                    it.a3=atoi(s[2].c_str());
+                    inst[ft[i]].push_back(it);
+                }
+
+            }
+        }
+	}
+
+    int Analyser::duihuan(std::string s) {
+        if(s=="bipush")
+            return 1;
+	   if(s=="ipush")
+	       return 2;
+	   if(s=="pop")
+	       return 4;
+	   if(s=="loada")
+	       return 10;
+	   if(s=="snew")
+	       return 12;
+	   if(s=="iload")
+	       return 16;
+	   if(s=="istore")
+	       return 32;
+	   if(s=="iadd")
+	       return 48;
+	   if(s=="isub")
+	       return 52;
+	   if(s=="imul")
+	       return 56;
+	   if(s=="idiv")
+	       return 60;
+	   if(s=="ineg")
+	       return 64;
+       if(s=="icmp")
+           return 68;
+       if(s=="jmp")
+           return 112;
+       if(s=="je")
+           return 113;
+       if(s=="jne")
+           return 114;
+       if(s=="jl")
+           return 115;
+       if(s=="jge")
+           return 116;
+       if(s=="jg")
+           return 117;
+       if(s=="jle")
+           return 118;
+       if(s=="call")
+           return 128;
+       if(s=="ret")
+           return 136;
+       if(s=="iret")
+           return 137;
+       if(s=="iprint")
+           return 160;
+       if(s=="cprint")
+           return 162;
+       if(s=="printl")
+           return 175;
+       if(s=="iscan")
+           return 176;
+	}
+	std::string Analyser::to_hexa(int n) {
+
+	    int a,b,c,d;
+	    a=n%16;
+	    n=n/16;
+	    b=n%16;
+	    n=n/16;
+	    c=n%16;
+	    n=n/16;
+	    d=n%16;
+	    std::string hexa;
+	    //printf("ss\n");
+	    hexa=to_number(d)+to_number(c)+" "+to_number(b)+to_number(a);
+        //printf("%s\n",hexa.c_str());
+	    return hexa;
+
+
+
+
+	}
+
+	std::string Analyser::to_number(int c) {
+
+        switch (c){
+            case 0:
+            {
+                return "0";
+                break;
+            }
+            case 1:
+            {
+                return "1";
+                break;
+            }
+            case 2:
+            {
+                return "2";
+                break;
+            }
+            case 3:
+            {
+                return "3";
+                break;
+            }
+            case 4:
+            {
+                return "4";
+                break;
+            }
+            case 5:
+            {
+                return "5";
+                break;
+            }
+            case 6:
+            {
+                return "6";
+                break;
+            }
+            case 7:
+            {
+                return "7";
+                break;
+            }
+            case 8:
+            {
+                return "8";
+                break;
+            }
+            case 9:
+            {
+                return "9";
+                break;
+            }
+
+            case 10:
+            {
+                return "a";
+                break;
+            }
+            case 11:
+            {
+                return "b";
+                break;
+            }
+            case 12:
+            {
+                return "c";
+                break;
+            }
+            case 13:
+            {
+                return "d";
+                break;
+            }
+            case 14:
+            {
+                return "e";
+                break;
+            }
+            case 15:
+            {
+                return "f";
+                break;
+            }
+        }
+
+
+
+	}
 	bool Analyser::check() {
 	    int i=0;
 	    for(i=0;i<ft.size();i++)

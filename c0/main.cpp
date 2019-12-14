@@ -33,15 +33,31 @@ void Tokenize(std::istream& input, std::ostream& output) {
 void Analyse(std::istream& input, std::ostream& output){
 	auto tks = _tokenize(input);
 	miniplc0::Analyser analyser(tks);
-	auto p = analyser.Analyse(output);
+	auto p = analyser.Analyse(output,'c');
 	if (p.second.has_value()) {
 		fmt::print(stderr, "Syntactic analysis error: {}\n", p.second.value());
 		exit(2);
 	}
+
+
 	auto v = p.first;
 	for(auto & it:v)
 	    output<<fmt::format("{}\n",it);
 	return;
+}
+
+void Analyse(std::istream& input, std::ostream& output,char status){
+    auto tks = _tokenize(input);
+    miniplc0::Analyser analyser(tks);
+    auto p = analyser.Analyse(output,status);
+    if (p.second.has_value()) {
+        fmt::print(stderr, "Syntactic analysis error: {}\n", p.second.value());
+        exit(2);
+    }
+    auto v = p.first;
+    for(auto & it:v)
+        output<<fmt::format("{}\n",it);
+    return;
 }
 
 int main(int argc, char** argv) {
@@ -56,6 +72,14 @@ int main(int argc, char** argv) {
 		.default_value(false)
 		.implicit_value(true)
 		.help("perform syntactic analysis for the input file.");
+    program.add_argument("-s")
+            .default_value(false)
+            .implicit_value(true)
+            .help("perform syntactic analysis for the input file.");
+    program.add_argument("-c")
+            .default_value(false)
+            .implicit_value(true)
+            .help("perform syntactic analysis for the input file.");
 	program.add_argument("-o", "--output")
 		.required()
 		.default_value(std::string("-"))
@@ -106,6 +130,12 @@ int main(int argc, char** argv) {
 	else if (program["-l"] == true) {
 		Analyse(*input, *output);
 	}
+    else if (program["-s"] == true) {
+        Analyse(*input, *output,'s');
+    }
+    else if (program["-c"] == true) {
+        Analyse(*input, *output,'c');
+    }
 	else {
 		fmt::print(stderr, "You must choose tokenization or syntactic analysis.");
 		exit(2);

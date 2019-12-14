@@ -27,6 +27,74 @@ namespace miniplc0 {
         int xiabiao;
 
     };
+    enum INSType{
+        NOP=0,
+        BIPUSH=1,
+        IPUSH=2,
+        POP=4,
+        POP2=5,
+        POPN=6,
+        DUP=7,
+        DUP2=8,
+        LOADC=9,
+        LOADA=10,
+        NEW=11,
+        SNEW=12,
+        ILOAD=16,
+        DLOAD=17,
+        ALOAD=18,
+        IALOAD=24,
+        DALOAD=25,
+        AALOAD=26,
+        ISTORE=32,
+        DSTORE=33,
+        ASTORE=34,
+        IASTORE=40,
+        DASTORE=41,
+        AASTORE=42,
+        IADD=48,
+        DADD=49,
+        ISUB=52,
+        DSUB=53,
+        IMUL=56,
+        DMUL=57,
+        IDIV=60,
+        DDIV=61,
+        INEG=64,
+        DENG=65,
+        ICMP=68,
+        DCMP=69,
+        I2D=96,
+        D2I=97,
+        I2C=98,
+        JMP=112,
+        JE=113,
+        JNE=114,
+        JL=115,
+        JGE=116,
+        JG=117,
+        JLE=118,
+        CALL=128,
+        RET=136,
+        IRET=137,
+        DRET=138,
+        ARET=139,
+        IPRINT=160,
+        DPRINT=161,
+        CPRINT=162,
+        SPRINT=163,
+        PRINTL=175,
+        ISCAN=176,
+        DSCAN=177,
+        CSCAN=178,
+    };
+    class Instruct{
+    public:
+        INSType type;
+        int a1;
+        int a2;
+        int a3;
+    };
 
 
 
@@ -38,11 +106,13 @@ namespace miniplc0 {
         int level=0;
         int index=0;
         int function_size;
-        bool init;
+        bool init=false;
         std::map<std::string,std::map<std::string,Symbol>> st;
         std::vector<std::string> ft;
+        std::map<std::string,std::string>ftt;
         std::map<std::string,int> fts;
         std::map<std::string,std::vector<std::string>> ins;
+        std::map<std::string,std::vector<Instruct>> inst;
         int biaoji;
 
 
@@ -65,16 +135,23 @@ namespace miniplc0 {
 		void AddWhile();
         void AddIf();
         void bianli( std::ostream& output);
+        void bianli1( std::ostream& output);
+        std::string to_hexa(int n);
+        std::string to_number(int c);
         bool check();
+
         int FindFunc(std::string name);
+        void transfer();
+        int duihuan(std::string s);
+        void split(const std::string& s,std::vector<std::string>& sv);
 
 		// 唯一接口
-		std::pair<std::vector<Instruction>, std::optional<CompilationError>> Analyse( std::ostream& output);
+		std::pair<std::vector<Instruction>, std::optional<CompilationError>> Analyse( std::ostream& output,char status);
 	private:
 		// 所有的递归子程序
 
 		// <程序>
-		std::optional<CompilationError> analyseProgram( std::ostream& output);
+		std::optional<CompilationError> analyseProgram( std::ostream& output,char status);
 
 		// <变量声明>
 		std::optional<CompilationError> analyseVariableDeclaration();
@@ -96,6 +173,7 @@ namespace miniplc0 {
         std::optional<CompilationError> analyseLoopStatement();
         std::optional<CompilationError> analyseJumpStatement();
         std::optional<CompilationError> analysePrintStatement();
+        std::optional<CompilationError> analysePrintAble();
         std::optional<CompilationError> analyseScanStatement();
         std::optional<CompilationError> analyseAssignmentExpression();
         std::optional<CompilationError> analyseFunctionCall();

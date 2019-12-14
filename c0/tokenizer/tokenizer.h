@@ -32,9 +32,14 @@ namespace miniplc0 {
 			EQUAL_SIGN_STATE,
 			SEMICOLON_STATE,
 			LEFTBRACKET_STATE,
-			RIGHTBRACKET_STATE
+			RIGHTBRACKET_STATE,
+			ZHUSHI_STATE,
+			DUOZHUSHI_STATE,
+			CHAR_STATE,
+			STRING_STATE,
 		};
 	public:
+	    std::string ss123;
 		Tokenizer(std::istream& ifs)
 			: _rdr(ifs), _initialized(false), _ptr(0, 0),_lines_buffer() {}
 		Tokenizer(Tokenizer&& tkz) = delete;
@@ -86,6 +91,8 @@ namespace miniplc0 {
         bool isdigit(char c);
         bool isnozerodigit(char c);
         bool isspace(char c);
+        bool fenxichar();
+        int to_hexa(char c);
 	private:
 		std::istream& _rdr;
 		// 如果没有初始化，那么就 readAll

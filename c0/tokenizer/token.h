@@ -60,7 +60,8 @@ namespace miniplc0 {
 		GREATER,
 		GREATER_EQUAL,
 		NO_EQUAL,
-		DOUHAO
+		DOUHAO,
+		STRING,
 
 
 	};

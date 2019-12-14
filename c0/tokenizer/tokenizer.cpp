@@ -62,6 +62,7 @@ namespace miniplc0 {
 				// 初始状态
 				// 这个 case 我们给出了核心逻辑，但是后面的 case 不用照搬。
 			case INITIAL_STATE: {
+
 				// 已经读到了文件尾
 				if (!current_char.has_value())
 					// 返回一个空的token，和编译错误ErrEOF：遇到了文件尾
@@ -89,8 +90,39 @@ namespace miniplc0 {
                         return std::make_pair(std::make_optional<Token>(TokenType::MINUS,'-',pos,currentPos()),std::optional<CompilationError>());
                     else if(ch=='*')
                         return std::make_pair(std::make_optional<Token>(TokenType::MULTIPLICATION,'*',pos,currentPos()),std::optional<CompilationError>());
-                    else if(ch=='/')
-                        return std::make_pair(std::make_optional<Token>(TokenType::DIVISION,'/',pos,currentPos()),std::optional<CompilationError>());
+                    else if(ch=='/') {
+                        current_char=nextChar();
+                        if(current_char.value()=='/')
+                        {
+                            current_state=ZHUSHI_STATE;
+                            continue;
+                        }
+                        else if(current_char.value()=='*')
+                        {
+                            current_state=DUOZHUSHI_STATE;
+                            continue;
+                        }
+                        else {
+                            unreadLast();
+                            return std::make_pair(
+                                    std::make_optional<Token>(TokenType::DIVISION, '/', pos, currentPos()),
+                                    std::optional<CompilationError>());
+                        }
+                    }
+                    else if(ch=='\'')
+                    {
+                        current_state=CHAR_STATE;
+                        continue;
+
+
+                    }
+                    else if(ch=='"')
+                    {
+                        current_state=STRING_STATE;
+                        continue;
+
+
+                    }
                     else if(ch=='(')
                         return std::make_pair(std::make_optional<Token>(TokenType::LEFT_SMALL_BRACKET,'(',pos,currentPos()),std::optional<CompilationError>());
                     else if(ch==')')
@@ -112,7 +144,7 @@ namespace miniplc0 {
                     {
                         current_char=nextChar();
                         if(current_char.value()=='=')
-                            return std::make_pair(std::make_optional<Token>(TokenType::EQUAL_EQUAL,'==',pos,currentPos()),std::optional<CompilationError>());
+                            return std::make_pair(std::make_optional<Token>(TokenType::EQUAL_EQUAL,'=',pos,currentPos()),std::optional<CompilationError>());
                         else
                         {
                             unreadLast();
@@ -548,6 +580,7 @@ namespace miniplc0 {
                         std::string sss;
                         long long int num=0;
                         ss >> sss;
+
                         const char *c=sss.c_str();
                         int i=0;
                         for(i=0;c[i]!='\0';i++)
@@ -564,6 +597,165 @@ namespace miniplc0 {
 
                     }
                     break;
+
+
+                }
+			    case ZHUSHI_STATE:{
+			        char c=current_char.value();
+			        if(c==10||c==13)
+                    {
+
+
+
+			            current_state=INITIAL_STATE;
+                    }
+			        break;
+			    }
+			    case DUOZHUSHI_STATE:{
+			        char c=current_char.value();
+			        if(c=='*')
+                    {
+			            c=nextChar().value();
+			            if(c=='/')
+                        {
+
+			                current_state=INITIAL_STATE;
+                        }
+			            else unreadLast();
+                    }
+			        break;
+
+
+			    }
+			    case CHAR_STATE:{
+
+
+                    if((current_char.value()>=32&&current_char.value()<=126)||current_char.value()==9)
+                    {
+
+
+                        if(current_char.value()=='"')
+                            return std::make_pair(std::optional<Token>(), std::make_optional<CompilationError>(pos,ErrorCode::ErrInvalidInput));
+                        else if(current_char.value()=='\\')
+                        {
+                            if(fenxichar()==false)
+                                return std::make_pair(std::optional<Token>(), std::make_optional<CompilationError>(pos,ErrorCode::ErrInvalidInput));
+                            current_char=nextChar();
+                            char c=current_char.value();
+
+                            switch(c) {
+                                case '\'':
+                                    c='\'';
+                                    break;
+                                case '\"':
+                                    c='"';
+                                    break;
+                                case 'n':
+                                    c=10;
+                                    break;
+                                case 'r':
+                                    c=13;
+                                    break;
+                                case 't':
+                                    c=9;
+                                    break;
+                                case 'x': {
+                                    char a=nextChar().value();
+                                    a=to_hexa(a);
+                                    char b=nextChar().value();
+                                    b=to_hexa(b);
+                                    if(a==-1||b==-1)
+                                        return std::make_pair(std::optional<Token>(), std::make_optional<CompilationError>(pos,ErrorCode::ErrInvalidInput));
+                                    c=a*16+b;
+                                    break;
+                                }
+                            }
+
+                            current_char=nextChar();
+                            if(current_char.value()!='\'')
+                                return std::make_pair(std::optional<Token>(), std::make_optional<CompilationError>(pos,ErrorCode::ErrInvalidInput));
+                            return std::make_pair(
+                                    std::make_optional<Token>(TokenType::CHAR, c, pos, currentPos()),
+                                    std::optional<CompilationError>());
+                        }
+                        char c=current_char.value();
+                        current_char=nextChar();
+
+                        if(current_char.value()!='\'')
+                            return std::make_pair(std::optional<Token>(), std::make_optional<CompilationError>(pos,ErrorCode::ErrInvalidInput));
+                        return std::make_pair(
+                                std::make_optional<Token>(TokenType::CHAR, c, pos, currentPos()),
+                                std::optional<CompilationError>());
+                    }
+                    else {
+                        return std::make_pair(std::optional<Token>(),
+                                              std::make_optional<CompilationError>(pos, ErrorCode::ErrInvalidInput));
+                    }
+
+
+			    }
+			    case STRING_STATE:{
+
+			        char c=current_char.value();
+			        if(((c>=32&&c<=126)||c==9)&&c!='"')
+                    {
+                        if(current_char.value()=='\\') {
+                            if (fenxichar() == false)
+                                return std::make_pair(std::optional<Token>(), std::make_optional<CompilationError>(pos,
+                                                                                                                   ErrorCode::ErrInvalidInput));
+                            current_char = nextChar();
+                            c = current_char.value();
+                            switch (c) {
+                                case '\'':
+                                    c = '\'';
+                                    break;
+                                case '\"':
+                                    c = '"';
+                                    break;
+                                case 'n':
+                                    c = '\n';
+                                    break;
+                                case 'r':
+                                    c = '\r';
+                                    break;
+                                case 't':
+                                    c = '\t';
+                                    break;
+                                case 'x': {
+                                    char a = nextChar().value();
+                                    a = to_hexa(a);
+                                    char b = nextChar().value();
+                                    b = to_hexa(b);
+                                    if (a == -1 || b == -1)
+                                        return std::make_pair(std::optional<Token>(),
+                                                              std::make_optional<CompilationError>(pos,
+                                                                                                   ErrorCode::ErrInvalidInput));
+                                    c = a * 16 + b;
+                                    break;
+                                }
+                            }
+
+                            ss123+=c;
+                        }
+                        else ss123+=c;
+
+                    }
+			        else if(c=='"')
+                    {
+
+			            std::string sss;
+			            ss >> sss;
+
+
+                        return std::make_pair(std::make_optional<Token>(TokenType::STRING, ss123, pos, currentPos()), std::optional<CompilationError>());
+
+                    }
+			        else {
+                        return std::make_pair(std::optional<Token>(),
+                                              std::make_optional<CompilationError>(pos, ErrorCode::ErrInvalidInput));
+                    }
+			        break;
+
 
 
                 }
@@ -678,5 +870,68 @@ namespace miniplc0 {
 
 
     }
+    bool Tokenizer::fenxichar()
+    {
+	    char c=nextChar().value();
+
+	    if(c=='\\'||c=='\''||c=='"'||c=='n'||c=='r'||c=='t'||c=='x') {
+	        unreadLast();
+            return true;
+        }
+	    else return false;
+    }
+    int Tokenizer::to_hexa(char c) {
+	    switch (c)
+        {
+            case '1':
+                return 1;
+            case '2':
+                return 2;
+            case '3':
+                return 3;
+            case '4':
+                return 4;
+            case '5':
+                return 5;
+            case '6':
+                return 6;
+            case '7':
+                return 7;
+            case '8':
+                return 8;
+            case '9':
+                return 9;
+            case '0':
+                return 0;
+            case 'a':
+                return 10;
+            case 'A':
+                return 10;
+            case 'b':
+                return 11;
+            case 'B':
+                return 11;
+            case 'c':
+                return 12;
+            case 'C':
+                return 12;
+            case 'd':
+                return 13;
+            case 'D':
+                return 13;
+            case 'e':
+                return 14;
+            case 'E':
+                return 14;
+            case 'f':
+                return 15;
+            case 'F':
+                return 15;
+            default:
+                return -1;
+        }
+
+
+	}
 
 }
