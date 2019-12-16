@@ -48,10 +48,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/chenyikun/CLionProjects/test/c0-vm-cpp-master
+CMAKE_SOURCE_DIR = /Users/chenyikun/Downloads/c0-vm-cpp-master
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/chenyikun/Downloads/c0-vm-cpp-master/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -126,14 +126,14 @@ install/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_progress_start /Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/cmake-build-debug/CMakeFiles /Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/cmake-build-debug/src/CMakeFiles/progress.marks
-	cd /Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 src/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/cmake-build-debug/CMakeFiles 0
+	cd /Users/chenyikun/Downloads/c0-vm-cpp-master/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_progress_start /Users/chenyikun/Downloads/c0-vm-cpp-master/cmake-build-debug/CMakeFiles /Users/chenyikun/Downloads/c0-vm-cpp-master/cmake-build-debug/src/CMakeFiles/progress.marks
+	cd /Users/chenyikun/Downloads/c0-vm-cpp-master/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 src/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/chenyikun/Downloads/c0-vm-cpp-master/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 src/clean
+	cd /Users/chenyikun/Downloads/c0-vm-cpp-master/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 src/clean
 .PHONY : clean
 
 # The main clean target
@@ -143,22 +143,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
+	cd /Users/chenyikun/Downloads/c0-vm-cpp-master/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
+	cd /Users/chenyikun/Downloads/c0-vm-cpp-master/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/cmake-build-debug && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /Users/chenyikun/Downloads/c0-vm-cpp-master/cmake-build-debug && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/CMakeFiles/c0-vm-cpp.dir/rule:
-	cd /Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/c0-vm-cpp.dir/rule
+	cd /Users/chenyikun/Downloads/c0-vm-cpp-master/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/c0-vm-cpp.dir/rule
 .PHONY : src/CMakeFiles/c0-vm-cpp.dir/rule
 
 # Convenience name for target.
@@ -168,12 +168,12 @@ c0-vm-cpp: src/CMakeFiles/c0-vm-cpp.dir/rule
 
 # fast build rule for target.
 c0-vm-cpp/fast:
-	cd /Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/cmake-build-debug && $(MAKE) -f src/CMakeFiles/c0-vm-cpp.dir/build.make src/CMakeFiles/c0-vm-cpp.dir/build
+	cd /Users/chenyikun/Downloads/c0-vm-cpp-master/cmake-build-debug && $(MAKE) -f src/CMakeFiles/c0-vm-cpp.dir/build.make src/CMakeFiles/c0-vm-cpp.dir/build
 .PHONY : c0-vm-cpp/fast
 
 # Convenience name for target.
 src/CMakeFiles/LIB_SRC.dir/rule:
-	cd /Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/LIB_SRC.dir/rule
+	cd /Users/chenyikun/Downloads/c0-vm-cpp-master/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/LIB_SRC.dir/rule
 .PHONY : src/CMakeFiles/LIB_SRC.dir/rule
 
 # Convenience name for target.
@@ -183,7 +183,7 @@ LIB_SRC: src/CMakeFiles/LIB_SRC.dir/rule
 
 # fast build rule for target.
 LIB_SRC/fast:
-	cd /Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/cmake-build-debug && $(MAKE) -f src/CMakeFiles/LIB_SRC.dir/build.make src/CMakeFiles/LIB_SRC.dir/build
+	cd /Users/chenyikun/Downloads/c0-vm-cpp-master/cmake-build-debug && $(MAKE) -f src/CMakeFiles/LIB_SRC.dir/build.make src/CMakeFiles/LIB_SRC.dir/build
 .PHONY : LIB_SRC/fast
 
 file.o: file.cpp.o
@@ -192,7 +192,7 @@ file.o: file.cpp.o
 
 # target to build an object file
 file.cpp.o:
-	cd /Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/cmake-build-debug && $(MAKE) -f src/CMakeFiles/LIB_SRC.dir/build.make src/CMakeFiles/LIB_SRC.dir/file.cpp.o
+	cd /Users/chenyikun/Downloads/c0-vm-cpp-master/cmake-build-debug && $(MAKE) -f src/CMakeFiles/LIB_SRC.dir/build.make src/CMakeFiles/LIB_SRC.dir/file.cpp.o
 .PHONY : file.cpp.o
 
 file.i: file.cpp.i
@@ -201,7 +201,7 @@ file.i: file.cpp.i
 
 # target to preprocess a source file
 file.cpp.i:
-	cd /Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/cmake-build-debug && $(MAKE) -f src/CMakeFiles/LIB_SRC.dir/build.make src/CMakeFiles/LIB_SRC.dir/file.cpp.i
+	cd /Users/chenyikun/Downloads/c0-vm-cpp-master/cmake-build-debug && $(MAKE) -f src/CMakeFiles/LIB_SRC.dir/build.make src/CMakeFiles/LIB_SRC.dir/file.cpp.i
 .PHONY : file.cpp.i
 
 file.s: file.cpp.s
@@ -210,7 +210,7 @@ file.s: file.cpp.s
 
 # target to generate assembly for a file
 file.cpp.s:
-	cd /Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/cmake-build-debug && $(MAKE) -f src/CMakeFiles/LIB_SRC.dir/build.make src/CMakeFiles/LIB_SRC.dir/file.cpp.s
+	cd /Users/chenyikun/Downloads/c0-vm-cpp-master/cmake-build-debug && $(MAKE) -f src/CMakeFiles/LIB_SRC.dir/build.make src/CMakeFiles/LIB_SRC.dir/file.cpp.s
 .PHONY : file.cpp.s
 
 main.o: main.cpp.o
@@ -219,7 +219,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	cd /Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/cmake-build-debug && $(MAKE) -f src/CMakeFiles/c0-vm-cpp.dir/build.make src/CMakeFiles/c0-vm-cpp.dir/main.cpp.o
+	cd /Users/chenyikun/Downloads/c0-vm-cpp-master/cmake-build-debug && $(MAKE) -f src/CMakeFiles/c0-vm-cpp.dir/build.make src/CMakeFiles/c0-vm-cpp.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -228,7 +228,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	cd /Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/cmake-build-debug && $(MAKE) -f src/CMakeFiles/c0-vm-cpp.dir/build.make src/CMakeFiles/c0-vm-cpp.dir/main.cpp.i
+	cd /Users/chenyikun/Downloads/c0-vm-cpp-master/cmake-build-debug && $(MAKE) -f src/CMakeFiles/c0-vm-cpp.dir/build.make src/CMakeFiles/c0-vm-cpp.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -237,7 +237,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	cd /Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/cmake-build-debug && $(MAKE) -f src/CMakeFiles/c0-vm-cpp.dir/build.make src/CMakeFiles/c0-vm-cpp.dir/main.cpp.s
+	cd /Users/chenyikun/Downloads/c0-vm-cpp-master/cmake-build-debug && $(MAKE) -f src/CMakeFiles/c0-vm-cpp.dir/build.make src/CMakeFiles/c0-vm-cpp.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 vm.o: vm.cpp.o
@@ -246,7 +246,7 @@ vm.o: vm.cpp.o
 
 # target to build an object file
 vm.cpp.o:
-	cd /Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/cmake-build-debug && $(MAKE) -f src/CMakeFiles/LIB_SRC.dir/build.make src/CMakeFiles/LIB_SRC.dir/vm.cpp.o
+	cd /Users/chenyikun/Downloads/c0-vm-cpp-master/cmake-build-debug && $(MAKE) -f src/CMakeFiles/LIB_SRC.dir/build.make src/CMakeFiles/LIB_SRC.dir/vm.cpp.o
 .PHONY : vm.cpp.o
 
 vm.i: vm.cpp.i
@@ -255,7 +255,7 @@ vm.i: vm.cpp.i
 
 # target to preprocess a source file
 vm.cpp.i:
-	cd /Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/cmake-build-debug && $(MAKE) -f src/CMakeFiles/LIB_SRC.dir/build.make src/CMakeFiles/LIB_SRC.dir/vm.cpp.i
+	cd /Users/chenyikun/Downloads/c0-vm-cpp-master/cmake-build-debug && $(MAKE) -f src/CMakeFiles/LIB_SRC.dir/build.make src/CMakeFiles/LIB_SRC.dir/vm.cpp.i
 .PHONY : vm.cpp.i
 
 vm.s: vm.cpp.s
@@ -264,7 +264,7 @@ vm.s: vm.cpp.s
 
 # target to generate assembly for a file
 vm.cpp.s:
-	cd /Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/cmake-build-debug && $(MAKE) -f src/CMakeFiles/LIB_SRC.dir/build.make src/CMakeFiles/LIB_SRC.dir/vm.cpp.s
+	cd /Users/chenyikun/Downloads/c0-vm-cpp-master/cmake-build-debug && $(MAKE) -f src/CMakeFiles/LIB_SRC.dir/build.make src/CMakeFiles/LIB_SRC.dir/vm.cpp.s
 .PHONY : vm.cpp.s
 
 # Help Target
@@ -301,6 +301,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/cmake-build-debug && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /Users/chenyikun/Downloads/c0-vm-cpp-master/cmake-build-debug && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

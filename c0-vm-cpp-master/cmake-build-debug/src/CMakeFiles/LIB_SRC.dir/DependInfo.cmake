@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/src/file.cpp" "/Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/cmake-build-debug/src/CMakeFiles/LIB_SRC.dir/file.cpp.o"
-  "/Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/src/vm.cpp" "/Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/cmake-build-debug/src/CMakeFiles/LIB_SRC.dir/vm.cpp.o"
+  "/Users/chenyikun/Downloads/c0-vm-cpp-master/src/file.cpp" "/Users/chenyikun/Downloads/c0-vm-cpp-master/cmake-build-debug/src/CMakeFiles/LIB_SRC.dir/file.cpp.o"
+  "/Users/chenyikun/Downloads/c0-vm-cpp-master/src/vm.cpp" "/Users/chenyikun/Downloads/c0-vm-cpp-master/cmake-build-debug/src/CMakeFiles/LIB_SRC.dir/vm.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 

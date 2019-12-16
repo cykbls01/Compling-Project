@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/chenyikun/CLionProjects/test/17373273_陈逸昆_c0/main.cpp" "/Users/chenyikun/CLionProjects/test/17373273_陈逸昆_c0/cmake-build-debug/CMakeFiles/miniplc0.dir/main.cpp.o"
+  "/Users/chenyikun/CLionProjects/test/17373273_陈逸昆_c0/main.cpp" "/Users/chenyikun/CLionProjects/test/17373273_陈逸昆_c0/cmake-build-debug/CMakeFiles/cc0.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 
@@ -22,7 +22,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/Users/chenyikun/CLionProjects/test/17373273_陈逸昆_c0/cmake-build-debug/CMakeFiles/miniplc0_lib.dir/DependInfo.cmake"
+  "/Users/chenyikun/CLionProjects/test/17373273_陈逸昆_c0/cmake-build-debug/CMakeFiles/cc0_lib.dir/DependInfo.cmake"
   "/Users/chenyikun/CLionProjects/test/17373273_陈逸昆_c0/cmake-build-debug/3rd_party/fmt/CMakeFiles/fmt.dir/DependInfo.cmake"
   )
 

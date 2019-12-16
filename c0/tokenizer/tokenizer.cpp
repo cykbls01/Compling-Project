@@ -84,6 +84,7 @@ namespace miniplc0 {
 					current_state = DFAState::IDENTIFIER_STATE; // 切换到标识符的状态
 				else {
 
+
 					if(ch=='+')
 					    return std::make_pair(std::make_optional<Token>(TokenType::PLUS,'+',pos,currentPos()),std::optional<CompilationError>());
 					else if(ch=='-')
@@ -215,6 +216,12 @@ namespace miniplc0 {
                         current_state=Integer_STATE;
 
                     }
+                    else {
+
+                        return std::make_pair(std::optional<Token>(),
+                                              std::make_optional<CompilationError>(0, 0, ErrInvalidInput));
+                    }
+
 
 
 

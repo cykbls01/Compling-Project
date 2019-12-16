@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/chenyikun/CLionProjects/test/17373273_陈逸昆_c0/analyser/analyser.cpp" "/Users/chenyikun/CLionProjects/test/17373273_陈逸昆_c0/cmake-build-debug/CMakeFiles/miniplc0_lib.dir/analyser/analyser.cpp.o"
-  "/Users/chenyikun/CLionProjects/test/17373273_陈逸昆_c0/tokenizer/tokenizer.cpp" "/Users/chenyikun/CLionProjects/test/17373273_陈逸昆_c0/cmake-build-debug/CMakeFiles/miniplc0_lib.dir/tokenizer/tokenizer.cpp.o"
+  "/Users/chenyikun/CLionProjects/test/17373273_陈逸昆_c0/analyser/analyser.cpp" "/Users/chenyikun/CLionProjects/test/17373273_陈逸昆_c0/cmake-build-debug/CMakeFiles/cc0_lib.dir/analyser/analyser.cpp.o"
+  "/Users/chenyikun/CLionProjects/test/17373273_陈逸昆_c0/tokenizer/tokenizer.cpp" "/Users/chenyikun/CLionProjects/test/17373273_陈逸昆_c0/cmake-build-debug/CMakeFiles/cc0_lib.dir/tokenizer/tokenizer.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 

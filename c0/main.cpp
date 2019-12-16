@@ -61,7 +61,7 @@ void Analyse(std::istream& input, std::ostream& output,char status){
 }
 
 int main(int argc, char** argv) {
-	argparse::ArgumentParser program("miniplc0");
+	argparse::ArgumentParser program("cc0");
 	program.add_argument("input")
 		.help("speicify the file to be compiled.");
 	program.add_argument("-t")
@@ -131,10 +131,10 @@ int main(int argc, char** argv) {
 		Analyse(*input, *output);
 	}
     else if (program["-s"] == true) {
-        Analyse(*input, *output,'s');
+        Analyse(*input, *output,'c');
     }
     else if (program["-c"] == true) {
-        Analyse(*input, *output,'c');
+        Analyse(*input, *output,'s');
     }
 	else {
 		fmt::print(stderr, "You must choose tokenization or syntactic analysis.");

@@ -1,4 +1,4 @@
-# Install script for directory: /Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/src
+# Install script for directory: /Users/chenyikun/Downloads/c0-vm-cpp-master/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

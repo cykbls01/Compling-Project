@@ -1,3 +1,3 @@
 file(REMOVE_RECURSE
-  "libminiplc0_lib.a"
+  "libcc0_lib.a"
 )

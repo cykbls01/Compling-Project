@@ -8,23 +8,23 @@
 		<Option virtualFolders="CMake Files\;CMake Files\3rd\;CMake Files\3rd\argparse\;CMake Files\src\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/cmake-build-debug/3rd/argparse"/>
+				<Option working_dir="/Users/chenyikun/Downloads/c0-vm-cpp-master/cmake-build-debug/3rd/argparse"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/cmake-build-debug/3rd/argparse/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/cmake-build-debug/3rd/argparse/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/cmake-build-debug/3rd/argparse/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/cmake-build-debug/3rd/argparse/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/chenyikun/Downloads/c0-vm-cpp-master/cmake-build-debug/3rd/argparse/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/chenyikun/Downloads/c0-vm-cpp-master/cmake-build-debug/3rd/argparse/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/chenyikun/Downloads/c0-vm-cpp-master/cmake-build-debug/3rd/argparse/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/chenyikun/Downloads/c0-vm-cpp-master/cmake-build-debug/3rd/argparse/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/CMakeLists.txt">
+		<Unit filename="/Users/chenyikun/Downloads/c0-vm-cpp-master/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
-		<Unit filename="/Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/3rd/argparse/CMakeLists.txt">
+		<Unit filename="/Users/chenyikun/Downloads/c0-vm-cpp-master/3rd/argparse/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\3rd\argparse\"/>
 		</Unit>
-		<Unit filename="/Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/src/CMakeLists.txt">
+		<Unit filename="/Users/chenyikun/Downloads/c0-vm-cpp-master/src/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\src\"/>
 		</Unit>
 	</Project>

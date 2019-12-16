@@ -21,6 +21,7 @@ namespace miniplc0 {
 	std::optional<CompilationError> Analyser::analyseProgram( std::ostream& output,char status) {
 
         AddFunc(func);//增加全局函数
+
         // {<variable-declaration>} 循环体去里面处理
 
 		auto var = analyseVariableDeclaration();//全局变量声明
@@ -298,7 +299,7 @@ namespace miniplc0 {
         symbol.name=next.value().GetValueString();
         if(AddIden(symbol)==false)
             return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrDuplicateDeclaration);
-
+        st[func][symbol.name].init=true;
 
 
 
@@ -578,6 +579,7 @@ namespace miniplc0 {
             if(st[func][symbol.name].type=="const")
                 return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrAssignToConstant);
             ins[func].push_back("loada 0, "+std::to_string(st[func][symbol.name].xiabiao));
+            st[func][symbol.name].init=true;
 
         }
         else if(st[" "].find(symbol.name)!=st[" "].end())
@@ -585,6 +587,7 @@ namespace miniplc0 {
             if(st[" "][symbol.name].type=="const")
                 return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrAssignToConstant);
             ins[func].push_back("loada 1, "+std::to_string(st[" "][symbol.name].xiabiao));
+            st[" "][symbol.name].init=true;
 
         }
         else return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrNotDeclared);
@@ -1282,6 +1285,11 @@ namespace miniplc0 {
 	}
 
     bool Analyser::AddFunc(std::string name) {
+
+	    if(name!=" "&&st[" "].find(name)!=st[" "].end())
+	        return false;
+
+
 	    if(st.find(name)!=st.end())
         {
 
@@ -1296,6 +1304,7 @@ namespace miniplc0 {
 	        std::map<std::string,Symbol> vt;
 	        st[name]=vt;
 	        ft.push_back(name);
+
 
 	        return true;
         }
@@ -1518,19 +1527,24 @@ namespace miniplc0 {
             if(inst[" "][i].a1!=-1)
                 writeNBytes(&inst[" "][i].a1,1);
                 //output << fmt::format("{:x} ",std::stoi((to_hexa(inst[" "][i].a1)).substr(3,2)));
-            int pianyi=2;
+            int a1=2,b1=2;
             if(inst[" "][i].a1==2)
-                pianyi=4;
+                a1=4;
             else if(inst[" "][i].a1==1)
-                pianyi=1;
+                a1=1;
+            else if(inst[" "][i].a1==10)
+            {
+                a1=2;
+                b1=4;
+            }
+
+
+
             if(inst[" "][i].a2!=-1)
-                writeNBytes(&inst[" "][i].a2,pianyi);
-            int dou=0x0000;
-            if(inst[" "][i].a1==10)
-                writeNBytes(&dou,2);
-                //output << fmt::format("{:x} ",std::stoi((to_hexa(inst[" "][i].a2))));
+                writeNBytes(&inst[" "][i].a2,a1);
+
             if(inst[" "][i].a3!=-1)
-                writeNBytes(&inst[" "][i].a3,pianyi);
+                writeNBytes(&inst[" "][i].a3,b1);
                 //output << fmt::format("{:x} ",std::stoi((to_hexa(inst[" "][i].a3))));
 
         }
@@ -1563,24 +1577,27 @@ namespace miniplc0 {
                     writeNBytes(&(inst[ft[i]][j].a1), 1);
                 }
 
-                    int pianyi=2;
+                int a1=2,b1=2;
                 if(inst[ft[i]][j].a1==2)
-                    pianyi=4;
+                    a1=4;
                 else if(inst[ft[i]][j].a1==1)
-                    pianyi=1;
+                    a1=1;
+                else if(inst[ft[i]][j].a1==10)
+                {
+                    a1=2;
+                    b1=4;
+                }
                 if(inst[ft[i]][j].a2!=-1) {
 
 
-                    writeNBytes(&(inst[ft[i]][j].a2), pianyi);
+                    writeNBytes(&(inst[ft[i]][j].a2), a1);
                 }
                     //output << fmt::format("{:x} ",std::stoi((to_hexa(inst[ft[i]][j].a2))));
                 //printf("ss %d\n",inst[ft[i]][j].a3);
 
-                int dou=0x0000;
-                if(inst[ft[i]][j].a1==10)
-                    writeNBytes(&dou,2);
+
                 if(inst[ft[i]][j].a3!=-1)
-                    writeNBytes(&(inst[ft[i]][j].a3),pianyi);
+                    writeNBytes(&(inst[ft[i]][j].a3),b1);
                     //output << fmt::format("{:x} ",std::stoi((to_hexa(inst[ft[i]][j].a3))));
             }
 

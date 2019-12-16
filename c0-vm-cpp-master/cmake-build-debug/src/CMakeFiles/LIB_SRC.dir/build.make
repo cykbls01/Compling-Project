@@ -43,10 +43,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/chenyikun/CLionProjects/test/c0-vm-cpp-master
+CMAKE_SOURCE_DIR = /Users/chenyikun/Downloads/c0-vm-cpp-master
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/chenyikun/Downloads/c0-vm-cpp-master/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include src/CMakeFiles/LIB_SRC.dir/depend.make
@@ -59,29 +59,29 @@ include src/CMakeFiles/LIB_SRC.dir/flags.make
 
 src/CMakeFiles/LIB_SRC.dir/file.cpp.o: src/CMakeFiles/LIB_SRC.dir/flags.make
 src/CMakeFiles/LIB_SRC.dir/file.cpp.o: ../src/file.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/CMakeFiles/LIB_SRC.dir/file.cpp.o"
-	cd /Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/cmake-build-debug/src && /Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LIB_SRC.dir/file.cpp.o -c /Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/src/file.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/chenyikun/Downloads/c0-vm-cpp-master/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/CMakeFiles/LIB_SRC.dir/file.cpp.o"
+	cd /Users/chenyikun/Downloads/c0-vm-cpp-master/cmake-build-debug/src && /Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LIB_SRC.dir/file.cpp.o -c /Users/chenyikun/Downloads/c0-vm-cpp-master/src/file.cpp
 
 src/CMakeFiles/LIB_SRC.dir/file.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LIB_SRC.dir/file.cpp.i"
-	cd /Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/cmake-build-debug/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/src/file.cpp > CMakeFiles/LIB_SRC.dir/file.cpp.i
+	cd /Users/chenyikun/Downloads/c0-vm-cpp-master/cmake-build-debug/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/chenyikun/Downloads/c0-vm-cpp-master/src/file.cpp > CMakeFiles/LIB_SRC.dir/file.cpp.i
 
 src/CMakeFiles/LIB_SRC.dir/file.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LIB_SRC.dir/file.cpp.s"
-	cd /Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/cmake-build-debug/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/src/file.cpp -o CMakeFiles/LIB_SRC.dir/file.cpp.s
+	cd /Users/chenyikun/Downloads/c0-vm-cpp-master/cmake-build-debug/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/chenyikun/Downloads/c0-vm-cpp-master/src/file.cpp -o CMakeFiles/LIB_SRC.dir/file.cpp.s
 
 src/CMakeFiles/LIB_SRC.dir/vm.cpp.o: src/CMakeFiles/LIB_SRC.dir/flags.make
 src/CMakeFiles/LIB_SRC.dir/vm.cpp.o: ../src/vm.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/CMakeFiles/LIB_SRC.dir/vm.cpp.o"
-	cd /Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/cmake-build-debug/src && /Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LIB_SRC.dir/vm.cpp.o -c /Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/src/vm.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/chenyikun/Downloads/c0-vm-cpp-master/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/CMakeFiles/LIB_SRC.dir/vm.cpp.o"
+	cd /Users/chenyikun/Downloads/c0-vm-cpp-master/cmake-build-debug/src && /Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LIB_SRC.dir/vm.cpp.o -c /Users/chenyikun/Downloads/c0-vm-cpp-master/src/vm.cpp
 
 src/CMakeFiles/LIB_SRC.dir/vm.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LIB_SRC.dir/vm.cpp.i"
-	cd /Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/cmake-build-debug/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/src/vm.cpp > CMakeFiles/LIB_SRC.dir/vm.cpp.i
+	cd /Users/chenyikun/Downloads/c0-vm-cpp-master/cmake-build-debug/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/chenyikun/Downloads/c0-vm-cpp-master/src/vm.cpp > CMakeFiles/LIB_SRC.dir/vm.cpp.i
 
 src/CMakeFiles/LIB_SRC.dir/vm.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LIB_SRC.dir/vm.cpp.s"
-	cd /Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/cmake-build-debug/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/src/vm.cpp -o CMakeFiles/LIB_SRC.dir/vm.cpp.s
+	cd /Users/chenyikun/Downloads/c0-vm-cpp-master/cmake-build-debug/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/chenyikun/Downloads/c0-vm-cpp-master/src/vm.cpp -o CMakeFiles/LIB_SRC.dir/vm.cpp.s
 
 # Object files for target LIB_SRC
 LIB_SRC_OBJECTS = \
@@ -95,9 +95,9 @@ src/libLIB_SRC.a: src/CMakeFiles/LIB_SRC.dir/file.cpp.o
 src/libLIB_SRC.a: src/CMakeFiles/LIB_SRC.dir/vm.cpp.o
 src/libLIB_SRC.a: src/CMakeFiles/LIB_SRC.dir/build.make
 src/libLIB_SRC.a: src/CMakeFiles/LIB_SRC.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library libLIB_SRC.a"
-	cd /Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/cmake-build-debug/src && $(CMAKE_COMMAND) -P CMakeFiles/LIB_SRC.dir/cmake_clean_target.cmake
-	cd /Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/cmake-build-debug/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/LIB_SRC.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/chenyikun/Downloads/c0-vm-cpp-master/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library libLIB_SRC.a"
+	cd /Users/chenyikun/Downloads/c0-vm-cpp-master/cmake-build-debug/src && $(CMAKE_COMMAND) -P CMakeFiles/LIB_SRC.dir/cmake_clean_target.cmake
+	cd /Users/chenyikun/Downloads/c0-vm-cpp-master/cmake-build-debug/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/LIB_SRC.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 src/CMakeFiles/LIB_SRC.dir/build: src/libLIB_SRC.a
@@ -105,10 +105,10 @@ src/CMakeFiles/LIB_SRC.dir/build: src/libLIB_SRC.a
 .PHONY : src/CMakeFiles/LIB_SRC.dir/build
 
 src/CMakeFiles/LIB_SRC.dir/clean:
-	cd /Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/cmake-build-debug/src && $(CMAKE_COMMAND) -P CMakeFiles/LIB_SRC.dir/cmake_clean.cmake
+	cd /Users/chenyikun/Downloads/c0-vm-cpp-master/cmake-build-debug/src && $(CMAKE_COMMAND) -P CMakeFiles/LIB_SRC.dir/cmake_clean.cmake
 .PHONY : src/CMakeFiles/LIB_SRC.dir/clean
 
 src/CMakeFiles/LIB_SRC.dir/depend:
-	cd /Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/chenyikun/CLionProjects/test/c0-vm-cpp-master /Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/src /Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/cmake-build-debug /Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/cmake-build-debug/src /Users/chenyikun/CLionProjects/test/c0-vm-cpp-master/cmake-build-debug/src/CMakeFiles/LIB_SRC.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/chenyikun/Downloads/c0-vm-cpp-master/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/chenyikun/Downloads/c0-vm-cpp-master /Users/chenyikun/Downloads/c0-vm-cpp-master/src /Users/chenyikun/Downloads/c0-vm-cpp-master/cmake-build-debug /Users/chenyikun/Downloads/c0-vm-cpp-master/cmake-build-debug/src /Users/chenyikun/Downloads/c0-vm-cpp-master/cmake-build-debug/src/CMakeFiles/LIB_SRC.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : src/CMakeFiles/LIB_SRC.dir/depend
 
