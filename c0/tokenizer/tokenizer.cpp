@@ -62,7 +62,7 @@ namespace miniplc0 {
 				// 初始状态
 				// 这个 case 我们给出了核心逻辑，但是后面的 case 不用照搬。
 			case INITIAL_STATE: {
-
+                ss123="";
 				// 已经读到了文件尾
 				if (!current_char.has_value())
 					// 返回一个空的token，和编译错误ErrEOF：遇到了文件尾
@@ -619,16 +619,23 @@ namespace miniplc0 {
 			        break;
 			    }
 			    case DUOZHUSHI_STATE:{
-			        char c=current_char.value();
+			        if(!current_char.has_value())
+                        return std::make_pair(std::optional<Token>(), std::make_optional<CompilationError>(pos,ErrorCode::ErrInvalidInput));
+                    char c=current_char.value();
 			        if(c=='*')
                     {
-			            c=nextChar().value();
-			            if(c=='/')
-                        {
+			            auto chh=nextChar();
+			            if(chh.has_value())
+			                c=chh.value();
+			            else
+                            return std::make_pair(std::optional<Token>(), std::make_optional<CompilationError>(pos,ErrorCode::ErrInvalidInput));
 
+                        if(c=='/')
+                        {
 			                current_state=INITIAL_STATE;
                         }
-			            else unreadLast();
+			            else if(c=='*') unreadLast();
+
                     }
 			        break;
 

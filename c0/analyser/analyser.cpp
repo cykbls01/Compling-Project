@@ -876,6 +876,8 @@ namespace miniplc0 {
 	        flag=true;
 	        unreadToken();
         }
+	    else if(next.value().GetType()==TokenType::PLUS)
+	        flag=true;
 
 	    // <primary-expression>
 	    auto error=analysePrimaryExpression();
