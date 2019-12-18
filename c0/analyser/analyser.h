@@ -139,7 +139,7 @@ namespace miniplc0 {
         std::string to_hexa(int n);
         std::string to_number(int c);
         bool check();
-
+        bool check1();
         int FindFunc(std::string name);
         void transfer();
         int duihuan(std::string s);

@@ -102,6 +102,9 @@ namespace fmt {
                 case miniplc0::ErrorWrongPara:
                     name="YOU NEED USE EQUAL PARA NUMBER";
                     break;
+                case miniplc0::ErrorSS:
+                    name="NI DE CHENG XU JIU SHI CUO DE";
+                    break;
 
 
 			}

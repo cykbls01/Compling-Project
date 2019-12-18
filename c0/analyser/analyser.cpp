@@ -19,7 +19,8 @@ namespace miniplc0 {
 	// <C0-program> ::=
     //    {<variable-declaration>}{<function-definition>}
 	std::optional<CompilationError> Analyser::analyseProgram( std::ostream& output,char status) {
-
+        if(check1()==false)
+            return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrorSS);
         AddFunc(func);//增加全局函数
 
         // {<variable-declaration>} 循环体去里面处理
@@ -203,7 +204,7 @@ namespace miniplc0 {
 
             if(next.value().GetType()!=TokenType::VOID&&next.value().GetType()!=TokenType::INT)
             {
-                return {};
+                return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrorSS);
             }
             if(next.value().GetType()==TokenType::VOID)
                 fanhui="void";
@@ -596,6 +597,8 @@ namespace miniplc0 {
             ins[func].push_back("loada 1, "+std::to_string(st[" "][symbol.name].xiabiao));
             st[" "][symbol.name].init=true;
 
+
+
         }
         else return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrNotDeclared);
         ins[func].push_back("iscan");
@@ -848,6 +851,7 @@ namespace miniplc0 {
                 if(st[func].find(symbol.name)!=st[func].end())
                 {
 
+
                     if(st[func][symbol.name].init==false)
                         return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrNotInitialized);
                     ins[func].push_back("loada 0, "+std::to_string(st[func][symbol.name].xiabiao));
@@ -856,10 +860,12 @@ namespace miniplc0 {
                 else if(st[" "].find(symbol.name)!=st[" "].end())
                 {
 
+
                     if(st[" "][symbol.name].init== false)
                         return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrNotInitialized);
-                    ins[func].push_back("loada 1, "+std::to_string(st[func][symbol.name].xiabiao));
+                    ins[func].push_back("loada 1, "+std::to_string(st[" "][symbol.name].xiabiao));
                     ins[func].push_back("iload");
+                    //printf("%s\n",symbol.name.c_str());
                 }
                 else return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrNotDeclared);
                 return {};
@@ -1057,10 +1063,10 @@ namespace miniplc0 {
                 case TokenType ::LEFT_BIG_BRACKET:
                 {
 
-                    next=nextToken();
+                    /*next=nextToken();
                     if(!next.has_value())
                         return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrInvalidInput);
-                    unreadToken();
+                    unreadToken();*/
                     unreadToken();
 
                     auto error=analyseCompoundStatement();
@@ -1192,10 +1198,10 @@ namespace miniplc0 {
         {
             case TokenType ::LEFT_BIG_BRACKET:
             {
-                next=nextToken();
+                /*next=nextToken();
                 if(!next.has_value())
                     return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrInvalidInput);
-                unreadToken();
+                unreadToken();*/
                 unreadToken();
                 auto error=analyseCompoundStatement();
                 if(error.has_value())
@@ -1873,6 +1879,12 @@ namespace miniplc0 {
 	    return false;
 
 
+	}
+	bool Analyser::check1() {
+	    auto next=_tokens[_tokens.size()-1];
+	    if(next.GetType()!=TokenType::RIGHT_BIG_BRACKET)
+	        return false;
+	    return true;
 	}
 
 

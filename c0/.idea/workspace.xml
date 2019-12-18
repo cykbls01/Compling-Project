@@ -2,8 +2,8 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="cc0" targetName="cc0" />
       <config projectName="cc0" targetName="cc0_lib" />
+      <config projectName="cc0" targetName="cc0" />
       <config projectName="cc0" targetName="fmt" />
       <config projectName="cc0" targetName="miniplc0_test" />
     </generated>
@@ -43,11 +43,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/analyser/analyser.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="850">
-              <caret line="828" column="30" lean-forward="true" selection-start-line="828" selection-start-column="30" selection-end-line="828" selection-end-column="30" />
+            <state relative-caret-position="229">
+              <caret line="1203" column="32" selection-start-line="1203" selection-start-column="32" selection-end-line="1203" selection-end-column="32" />
               <folding>
                 <element signature="e#45#63#0" expanded="true" />
               </folding>
@@ -56,10 +56,31 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fmts.hpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="298">
+              <caret line="105" column="55" selection-start-line="105" selection-start-column="55" selection-end-line="105" selection-end-column="55" />
+              <folding>
+                <element signature="e#0#21#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/1.plc0">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="385">
+              <caret line="34" column="14" lean-forward="true" selection-start-line="34" selection-start-column="14" selection-end-line="34" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tokenizer/tokenizer.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="166">
-              <caret line="64" column="25" selection-start-line="64" selection-start-column="25" selection-end-line="64" selection-end-column="25" />
+            <state relative-caret-position="10215">
+              <caret line="681" column="153" selection-start-line="681" selection-start-column="138" selection-end-line="681" selection-end-column="153" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
@@ -79,10 +100,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/analyser/analyser.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="747">
-              <caret line="141" selection-start-line="141" selection-end-line="141" />
+            <state relative-caret-position="-57">
+              <caret line="199" column="39" selection-start-line="199" selection-start-column="39" selection-end-line="199" selection-end-column="39" />
               <folding>
                 <element signature="e#14#38#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/error/error.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="50" column="16" selection-start-line="50" selection-start-column="16" selection-end-line="50" selection-end-column="16" />
+              <folding>
+                <element signature="e#14#32#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -92,9 +125,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>shanchu</find>
-      <find>index</find>
-      <find>'{'</find>
       <find>func</find>
       <find>Add</find>
       <find>_inst</find>
@@ -122,6 +152,9 @@
       <find>AddF</find>
       <find>compound</find>
       <find>nextToken</find>
+      <find>printf(</find>
+      <find>printf(&quot;</find>
+      <find>ErrInvalidInput</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -130,11 +163,8 @@
         <option value="$PROJECT_DIR$/hello.plc0" />
         <option value="$PROJECT_DIR$/analyser/symbol.cpp" />
         <option value="$PROJECT_DIR$/analyser/symbol.h" />
-        <option value="$PROJECT_DIR$/error/error.h" />
         <option value="$PROJECT_DIR$/instruction/instruction.h" />
         <option value="$PROJECT_DIR$/tokenizer/token.h" />
-        <option value="$PROJECT_DIR$/fmts.hpp" />
-        <option value="$PROJECT_DIR$/analyser/analyser.h" />
         <option value="$PROJECT_DIR$/cmake-build-debug/1.s0" />
         <option value="$PROJECT_DIR$/cmake-build-debug/2.c0.out" />
         <option value="$PROJECT_DIR$/tokenizer/tokenizer.h" />
@@ -142,6 +172,9 @@
         <option value="$PROJECT_DIR$/main.cpp" />
         <option value="$PROJECT_DIR$/cmake-build-debug/2.c0" />
         <option value="$PROJECT_DIR$/tokenizer/tokenizer.cpp" />
+        <option value="$PROJECT_DIR$/analyser/analyser.h" />
+        <option value="$PROJECT_DIR$/error/error.h" />
+        <option value="$PROJECT_DIR$/fmts.hpp" />
         <option value="$PROJECT_DIR$/analyser/analyser.cpp" />
         <option value="$PROJECT_DIR$/1.plc0" />
       </list>
@@ -149,7 +182,7 @@
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="127" />
+    <option name="x" value="471" />
     <option name="y" value="23" />
     <option name="width" value="1234" />
     <option name="height" value="877" />
@@ -159,7 +192,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -180,12 +212,23 @@
             <path>
               <item name="cc0" type="b2602c69:ProjectViewProjectNode" />
               <item name="17373273_陈逸昆_c0" type="462c0819:PsiDirectoryNode" />
+              <item name="error" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cc0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="17373273_陈逸昆_c0" type="462c0819:PsiDirectoryNode" />
+              <item name="instruction" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cc0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="17373273_陈逸昆_c0" type="462c0819:PsiDirectoryNode" />
               <item name="tokenizer" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -301,18 +344,18 @@
       <workItem from="1576499804164" duration="691000" />
       <workItem from="1576572813320" duration="2423000" />
       <workItem from="1576639768333" duration="4299000" />
+      <workItem from="1576650790353" duration="3524000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="127533000" />
+    <option name="totallyTimeSpent" value="131057000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="127" y="23" width="1234" height="877" extended-state="0" />
-    <editor active="true" />
+    <frame x="471" y="23" width="1234" height="877" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7879925" visible="true" weight="0.28020135" />
-      <window_info id="Structure" order="1" sideWeight="0.21200751" side_tool="true" visible="true" weight="0.28020135" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7861163" visible="true" weight="0.28439596" />
+      <window_info id="Structure" order="1" sideWeight="0.21388368" side_tool="true" visible="true" weight="0.28439596" />
       <window_info id="Favorites" order="2" sideWeight="0.16225749" side_tool="true" weight="0.23825504" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3299363" />
@@ -377,26 +420,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/error/error.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="735">
-          <caret line="49" column="23" selection-start-line="49" selection-start-column="23" selection-end-line="49" selection-end-column="23" />
-          <folding>
-            <element signature="e#14#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fmts.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2970">
-          <caret line="198" column="34" selection-start-line="198" selection-start-column="34" selection-end-line="198" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/analyser/file.h" />
     <entry file="file://$PROJECT_DIR$/analyser/file.cpp" />
     <entry file="file://$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" />
@@ -447,10 +470,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/error/error.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="50" column="16" selection-start-line="50" selection-start-column="16" selection-end-line="50" selection-end-column="16" />
+          <folding>
+            <element signature="e#14#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/analyser/analyser.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="747">
-          <caret line="141" selection-start-line="141" selection-end-line="141" />
+        <state relative-caret-position="-57">
+          <caret line="199" column="39" selection-start-line="199" selection-start-column="39" selection-end-line="199" selection-end-column="39" />
           <folding>
             <element signature="e#14#38#0" expanded="true" />
           </folding>
@@ -467,10 +500,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/fmts.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="105" column="55" selection-start-line="105" selection-start-column="55" selection-end-line="105" selection-end-column="55" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/analyser/analyser.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="1203" column="32" selection-start-line="1203" selection-start-column="32" selection-end-line="1203" selection-end-column="32" />
+          <folding>
+            <element signature="e#45#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tokenizer/tokenizer.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="64" column="25" selection-start-line="64" selection-start-column="25" selection-end-line="64" selection-end-column="25" />
+        <state relative-caret-position="10215">
+          <caret line="681" column="153" selection-start-line="681" selection-start-column="138" selection-end-line="681" selection-end-column="153" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
           </folding>
@@ -479,18 +532,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/1.plc0">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/analyser/analyser.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="850">
-          <caret line="828" column="30" lean-forward="true" selection-start-line="828" selection-start-column="30" selection-end-line="828" selection-end-column="30" />
-          <folding>
-            <element signature="e#45#63#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="385">
+          <caret line="34" column="14" lean-forward="true" selection-start-line="34" selection-start-column="14" selection-end-line="34" selection-end-column="14" />
         </state>
       </provider>
     </entry>
