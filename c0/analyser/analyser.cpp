@@ -75,6 +75,8 @@ namespace miniplc0 {
             }
             //函数和标识符区分一下
             next=nextToken();
+            if(!next.has_value())
+                return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrNeedIdentifier);
             next=nextToken();
             if(next.has_value()&&next.value().GetType()==TokenType::LEFT_SMALL_BRACKET)
             {
@@ -360,6 +362,7 @@ namespace miniplc0 {
         if(error.has_value())
             return error;
         // '}'
+
         index--;
 
 
@@ -399,18 +402,21 @@ namespace miniplc0 {
         // [<relational-operator><expression>]
         next=nextToken();
         unreadToken();
+
         if(next.has_value()&&(next.value().GetType()==TokenType::LESS||next.value().GetType()==TokenType::LESS_EQUAL||next.value().GetType()==TokenType::GREATER
             ||next.value().GetType()==TokenType::GREATER_EQUAL||next.value().GetType()==TokenType::NO_EQUAL||next.value().GetType()==TokenType::EQUAL_EQUAL))
         {
             std::string aaa=next.value().GetValueString();
             if(next.value().GetType()==TokenType::GREATER_EQUAL||next.value().GetType()==TokenType::LESS_EQUAL||next.value().GetType()==TokenType::NO_EQUAL||next.value().GetType()==TokenType::EQUAL_EQUAL)
                 aaa=aaa+"=";
+
             next=nextToken();
             error=analyseExpression();
             if(error.has_value())
                 return error;
             ins[func].push_back("icmp");
             ins[func].push_back("ifbegin"+aaa);
+
         }
         else
         {
@@ -418,6 +424,7 @@ namespace miniplc0 {
             ins[func].push_back("icmp");
             ins[func].push_back("ifbegin!=");
         }
+
         // ')'
         next=nextToken();
         if(!next.has_value()||next.value().GetType()!=TokenType::RIGHT_SMALL_BRACKET)
@@ -532,7 +539,7 @@ namespace miniplc0 {
         if(!next.has_value()||next.value().GetType()==TokenType::SEMICOLON) {
             if(fanhui=="int")
                 return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrorReturn);
-            ins[func].push_back("ipop");
+            ins[func].push_back("pop");
             ins[func].push_back("ret");
             return {};
         }
@@ -777,7 +784,13 @@ namespace miniplc0 {
     // <expression> ::=
     //    <additive-expression>
     std::optional<CompilationError> Analyser::analyseExpression() {
-	    // <additive-expression>
+
+	    auto next=nextToken();
+	    if(!next.has_value())
+            return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrInvalidInput);
+        unreadToken();
+
+        // <additive-expression>
 	    auto error=analyseAdditiveExpression();
         if(error.has_value())
             return error;
@@ -894,18 +907,20 @@ namespace miniplc0 {
         auto error=analyseUnaryExpression();
         if(error.has_value())
             return error;
+
         while(true)
         {
             // <multiplicative-operator>
             auto next=nextToken();
-            TokenType type=next.value().GetType();
+            TokenType type;
+            if(next.has_value())
+            type=next.value().GetType();
             if(!next.has_value()||(next.value().GetType()!=TokenType::MULTIPLICATION&&next.value().GetType()!=TokenType::DIVISION))
             {
                 unreadToken();
                 return {};
             }
             // <unary-expression>
-
             error=analyseUnaryExpression();
             if(error.has_value())
                 return error;
@@ -925,20 +940,27 @@ namespace miniplc0 {
         auto error=analyseMultiplicativeExpression();
         if(error.has_value())
             return error;
+
         while(true)
         {
+
             // <additive-operator>
             auto next=nextToken();
-            TokenType type=next.value().GetType();
+            TokenType type;
+            if(next.has_value())
+            type=next.value().GetType();
             if(!next.has_value()||(next.value().GetType()!=TokenType::PLUS&&next.value().GetType()!=TokenType::MINUS))
             {
                 unreadToken();
                 return {};
             }
+
             // <multiplicative-expression>
             error=analyseMultiplicativeExpression();
             if(error.has_value())
                 return error;
+
+
 
             if(type==TokenType::PLUS)
                 ins[func].push_back("iadd");
@@ -964,6 +986,7 @@ namespace miniplc0 {
         if(!next.has_value()||next.value().GetType()!=TokenType::LEFT_SMALL_BRACKET)
             return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrorNeedBracket);
         // ')'
+        function_size=0;
         next=nextToken();
         unreadToken();
         if(!next.has_value()||next.value().GetType()!=TokenType::RIGHT_SMALL_BRACKET)
@@ -1026,8 +1049,6 @@ namespace miniplc0 {
 
 
 	        auto next=nextToken();
-
-
             if(!next.has_value())
                 return {};
 
@@ -1036,6 +1057,10 @@ namespace miniplc0 {
                 case TokenType ::LEFT_BIG_BRACKET:
                 {
 
+                    next=nextToken();
+                    if(!next.has_value())
+                        return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrInvalidInput);
+                    unreadToken();
                     unreadToken();
 
                     auto error=analyseCompoundStatement();
@@ -1167,6 +1192,10 @@ namespace miniplc0 {
         {
             case TokenType ::LEFT_BIG_BRACKET:
             {
+                next=nextToken();
+                if(!next.has_value())
+                    return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrInvalidInput);
+                unreadToken();
                 unreadToken();
                 auto error=analyseCompoundStatement();
                 if(error.has_value())
