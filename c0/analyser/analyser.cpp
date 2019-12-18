@@ -1289,6 +1289,7 @@ namespace miniplc0 {
                 return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrEOF);
                 break;
         }
+        return {};
 	}
 
 
@@ -1383,7 +1384,7 @@ namespace miniplc0 {
 
 	void Analyser::AddWhile() {
 	    int i;
-	    for(i=ins[func].size();i>=0;i--)
+	    for(i=ins[func].size()-1;i>=0;i--)
         {
 	        if(ins[func][i]=="whilebegin!=")
             {
@@ -1428,7 +1429,7 @@ namespace miniplc0 {
 
     void Analyser::AddIf() {
         int i;
-        for(i=ins[func].size();i>=0;i--)
+        for(i=ins[func].size()-1;i>=0;i--)
         {
             if(ins[func][i]=="ifbegin!=")
             {
