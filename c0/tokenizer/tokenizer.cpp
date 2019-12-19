@@ -442,7 +442,7 @@ namespace miniplc0 {
                             }
                             num=num*16+a;
 
-                            if(num>2147483647)
+                            if(num>2147483648)
                                 return std::make_pair(std::optional<Token>(), std::make_optional<CompilationError>(pos,ErrorCode::ErrIntegerOverflow));
 
 
@@ -532,7 +532,7 @@ namespace miniplc0 {
 
                             }
                             num = num * 16 + a;
-                            if (num > 2147483647)
+                            if (num > 2147483648)
                                 return std::make_pair(std::optional<Token>(), std::make_optional<CompilationError>(pos,
                                                                                                                    ErrorCode::ErrIntegerOverflow));
                         }
@@ -561,7 +561,7 @@ namespace miniplc0 {
                             a=c[i]-'0';
                             num=num*10+a;
 
-                            if(num>2147483647)
+                            if(num>2147483648)
                                 return std::make_pair(std::optional<Token>(), std::make_optional<CompilationError>(pos,ErrorCode::ErrIntegerOverflow));
                         }
                         int nnn=num;
@@ -596,7 +596,7 @@ namespace miniplc0 {
                             a=c[i]-'0';
                             num=num*10+a;
 
-                            if(num>2147483647)
+                            if(num>2147483648)
                                 return std::make_pair(std::optional<Token>(), std::make_optional<CompilationError>(pos,ErrorCode::ErrIntegerOverflow));
                         }
                         int nnn=num;
