@@ -2,8 +2,8 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="cc0" targetName="cc0_lib" />
       <config projectName="cc0" targetName="cc0" />
+      <config projectName="cc0" targetName="cc0_lib" />
       <config projectName="cc0" targetName="fmt" />
       <config projectName="cc0" targetName="miniplc0_test" />
     </generated>
@@ -43,11 +43,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/analyser/analyser.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="1431" column="32" selection-start-line="1431" selection-start-column="32" selection-end-line="1431" selection-end-column="32" />
+            <state relative-caret-position="17685">
+              <caret line="1179" column="18" selection-start-line="1179" selection-start-column="18" selection-end-line="1179" selection-end-column="18" />
               <folding>
                 <element signature="e#45#63#0" expanded="true" />
               </folding>
@@ -67,11 +67,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/1.plc0">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="9" lean-forward="true" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
+            <state relative-caret-position="75">
+              <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -175,15 +175,15 @@
         <option value="$PROJECT_DIR$/analyser/analyser.h" />
         <option value="$PROJECT_DIR$/error/error.h" />
         <option value="$PROJECT_DIR$/fmts.hpp" />
-        <option value="$PROJECT_DIR$/1.plc0" />
         <option value="$PROJECT_DIR$/analyser/analyser.cpp" />
+        <option value="$PROJECT_DIR$/1.plc0" />
       </list>
     </option>
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="771" />
-    <option name="y" value="90" />
+    <option name="x" value="206" />
+    <option name="y" value="23" />
     <option name="width" value="1234" />
     <option name="height" value="877" />
   </component>
@@ -192,7 +192,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -229,6 +228,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -346,23 +346,25 @@
       <workItem from="1576639768333" duration="4299000" />
       <workItem from="1576650790353" duration="3524000" />
       <workItem from="1576661562968" duration="62000" />
-      <workItem from="1576662901037" duration="1155000" />
+      <workItem from="1576662901037" duration="1270000" />
+      <workItem from="1576717823482" duration="78000" />
+      <workItem from="1576717905030" duration="31000" />
+      <workItem from="1576718016196" duration="2000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="132274000" />
+    <option name="totallyTimeSpent" value="132500000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="771" y="90" width="1234" height="877" extended-state="0" />
-    <editor active="true" />
+    <frame x="206" y="23" width="1234" height="877" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7817837" visible="true" weight="0.29362416" />
-      <window_info id="Structure" order="1" sideWeight="0.21821631" side_tool="true" visible="true" weight="0.29362416" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7767355" visible="true" weight="0.30872482" />
+      <window_info id="Structure" order="1" sideWeight="0.22326455" side_tool="true" visible="true" weight="0.30872482" />
       <window_info id="Favorites" order="2" sideWeight="0.16225749" side_tool="true" weight="0.23825504" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3299363" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32866243" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32866243" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -371,7 +373,7 @@
       <window_info anchor="bottom" id="Messages" order="8" weight="0.32866243" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.3210191" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.3210191" />
       <window_info anchor="bottom" id="CMake" order="12" weight="0.3299363" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -476,6 +478,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/analyser/analyser.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17685">
+          <caret line="1179" column="18" selection-start-line="1179" selection-start-column="18" selection-end-line="1179" selection-end-column="18" />
+          <folding>
+            <element signature="e#45#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/fmts.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1575">
@@ -525,18 +537,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/1.plc0">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="9" lean-forward="true" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/analyser/analyser.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="1431" column="32" selection-start-line="1431" selection-start-column="32" selection-end-line="1431" selection-end-column="32" />
-          <folding>
-            <element signature="e#45#63#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="75">
+          <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
         </state>
       </provider>
     </entry>

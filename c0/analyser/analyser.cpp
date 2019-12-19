@@ -1159,9 +1159,11 @@ namespace miniplc0 {
 
                     break;
                 }
+                case TokenType ::SEMICOLON:
+                {
+                    break;
 
-
-
+                }
                 default:
                     unreadToken();
                     return {};
@@ -1175,6 +1177,7 @@ namespace miniplc0 {
 
 
         }
+	    return {};
 
 
 	}
@@ -1284,6 +1287,11 @@ namespace miniplc0 {
                     return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrNoSemicolon);
 
                 break;
+            }
+            case TokenType ::SEMICOLON:
+            {
+                break;
+
             }
             default:
                 return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrEOF);
