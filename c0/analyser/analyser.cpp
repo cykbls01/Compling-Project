@@ -644,7 +644,8 @@ namespace miniplc0 {
         }
         else if(next.value().GetType()==TokenType::STRING)
         {
-            const char *c=next.value().GetValueString().c_str();
+            char c[10000];
+            std::strcpy(c,next.value().GetValueString().c_str());
             for(int i=0;c[i]!='\0';i++)
             {
 
@@ -695,11 +696,11 @@ namespace miniplc0 {
             if (next.value().GetType() == TokenType::CHAR) {
 
                 const char *c=next.value().GetValueString().c_str();
-
                 ins[func].push_back("bipush "+std::to_string(c[0]));
                 ins[func].push_back("cprint");
             } else if (next.value().GetType() == TokenType::STRING) {
-                const char *c = next.value().GetValueString().c_str();
+                char c[10000];
+                std::strcpy(c,next.value().GetValueString().c_str());
                 for (int i = 0; c[i] != '\0'; i++) {
 
                     ins[func].push_back("bipush " + std::to_string(c[i]));
