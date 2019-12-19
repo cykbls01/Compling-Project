@@ -2,8 +2,8 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="cc0" targetName="cc0_lib" />
       <config projectName="cc0" targetName="cc0" />
+      <config projectName="cc0" targetName="cc0_lib" />
       <config projectName="cc0" targetName="fmt" />
       <config projectName="cc0" targetName="miniplc0_test" />
     </generated>
@@ -46,8 +46,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/analyser/analyser.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17685">
-              <caret line="1179" column="18" selection-start-line="1179" selection-start-column="18" selection-end-line="1179" selection-end-column="18" />
+            <state relative-caret-position="331">
+              <caret line="1379" column="21" selection-start-line="1379" selection-start-column="21" selection-end-line="1379" selection-end-column="21" />
               <folding>
                 <element signature="e#45#63#0" expanded="true" />
               </folding>
@@ -67,11 +67,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/1.plc0">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="30">
-              <caret line="2" column="16" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
+              <caret line="2" column="9" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -88,11 +88,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/说明.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="240">
-              <caret line="16" column="55" lean-forward="true" selection-start-line="16" selection-start-column="55" selection-end-line="16" selection-end-column="55" />
+              <caret line="16" column="55" selection-start-line="16" selection-start-column="55" selection-end-line="16" selection-end-column="55" />
             </state>
           </provider>
         </entry>
@@ -150,16 +150,16 @@
         <option value="$PROJECT_DIR$/analyser/analyser.h" />
         <option value="$PROJECT_DIR$/error/error.h" />
         <option value="$PROJECT_DIR$/fmts.hpp" />
-        <option value="$PROJECT_DIR$/analyser/analyser.cpp" />
         <option value="$PROJECT_DIR$/tokenizer/tokenizer.cpp" />
-        <option value="$PROJECT_DIR$/1.plc0" />
         <option value="$PROJECT_DIR$/说明.txt" />
+        <option value="$PROJECT_DIR$/analyser/analyser.cpp" />
+        <option value="$PROJECT_DIR$/1.plc0" />
       </list>
     </option>
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="319" />
+    <option name="x" value="139" />
     <option name="y" value="23" />
     <option name="width" value="1234" />
     <option name="height" value="877" />
@@ -303,17 +303,18 @@
       <workItem from="1576717905030" duration="31000" />
       <workItem from="1576718016196" duration="2000" />
       <workItem from="1576733640977" duration="538000" />
+      <workItem from="1576735849439" duration="263000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="133038000" />
+    <option name="totallyTimeSpent" value="133301000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="319" y="23" width="1234" height="877" extended-state="0" />
+    <frame x="139" y="23" width="1234" height="877" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7748593" visible="true" weight="0.3137584" />
-      <window_info id="Structure" order="1" sideWeight="0.2251407" side_tool="true" visible="true" weight="0.3137584" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.77298313" visible="true" weight="0.31879196" />
+      <window_info id="Structure" order="1" sideWeight="0.22701688" side_tool="true" visible="true" weight="0.31879196" />
       <window_info id="Favorites" order="2" sideWeight="0.16225749" side_tool="true" weight="0.23825504" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3299363" />
@@ -326,7 +327,7 @@
       <window_info anchor="bottom" id="Messages" order="8" weight="0.32866243" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.3210191" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.3210191" />
       <window_info anchor="bottom" id="CMake" order="12" weight="0.3299363" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -421,36 +422,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2040">
-          <caret line="136" column="34" selection-start-line="136" selection-start-column="34" selection-end-line="136" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/analyser/analyser.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17685">
-          <caret line="1179" column="18" selection-start-line="1179" selection-start-column="18" selection-end-line="1179" selection-end-column="18" />
-          <folding>
-            <element signature="e#45#63#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fmts.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1575">
-          <caret line="105" column="55" selection-start-line="105" selection-start-column="55" selection-end-line="105" selection-end-column="55" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tokenizer/utils.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -478,6 +449,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2040">
+          <caret line="136" column="34" selection-start-line="136" selection-start-column="34" selection-end-line="136" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fmts.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1575">
+          <caret line="105" column="55" selection-start-line="105" selection-start-column="55" selection-end-line="105" selection-end-column="55" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/说明.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="55" selection-start-line="16" selection-start-column="55" selection-end-line="16" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tokenizer/tokenizer.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="268">
@@ -488,17 +486,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/1.plc0">
+    <entry file="file://$PROJECT_DIR$/analyser/analyser.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="16" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
+        <state relative-caret-position="331">
+          <caret line="1379" column="21" selection-start-line="1379" selection-start-column="21" selection-end-line="1379" selection-end-column="21" />
+          <folding>
+            <element signature="e#45#63#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/说明.txt">
+    <entry file="file://$PROJECT_DIR$/1.plc0">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="55" lean-forward="true" selection-start-line="16" selection-start-column="55" selection-end-line="16" selection-end-column="55" />
+        <state relative-caret-position="30">
+          <caret line="2" column="9" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
         </state>
       </provider>
     </entry>

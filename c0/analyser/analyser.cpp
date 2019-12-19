@@ -1376,6 +1376,8 @@ namespace miniplc0 {
 
     int Analyser::FindFunc(std::string name) {
 	    int i;
+	    if(st[func].find(name)!=st[func].end())
+	        return 0;
         for(i=0;i<ft.size();i++)
         {
             if(ft[i]==name)
