@@ -2,8 +2,8 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="cc0" targetName="cc0_lib" />
       <config projectName="cc0" targetName="cc0" />
+      <config projectName="cc0" targetName="cc0_lib" />
       <config projectName="cc0" targetName="fmt" />
       <config projectName="cc0" targetName="miniplc0_test" />
     </generated>
@@ -43,11 +43,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/analyser/analyser.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="16">
-              <caret line="697" column="68" selection-start-line="697" selection-start-column="68" selection-end-line="697" selection-end-column="68" />
+            <state relative-caret-position="9615">
+              <caret line="641" column="21" selection-start-line="641" selection-start-column="21" selection-end-line="641" selection-end-column="21" />
               <folding>
                 <element signature="e#45#63#0" expanded="true" />
               </folding>
@@ -67,11 +67,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/1.plc0">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
+            <state relative-caret-position="150">
+              <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -79,8 +79,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tokenizer/tokenizer.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4426">
-              <caret line="444" column="45" selection-start-line="444" selection-start-column="35" selection-end-line="444" selection-end-column="45" />
+            <state relative-caret-position="435">
+              <caret line="754" column="38" selection-start-line="754" selection-start-column="38" selection-end-line="754" selection-end-column="38" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
@@ -150,10 +150,10 @@
         <option value="$PROJECT_DIR$/analyser/analyser.h" />
         <option value="$PROJECT_DIR$/error/error.h" />
         <option value="$PROJECT_DIR$/fmts.hpp" />
-        <option value="$PROJECT_DIR$/tokenizer/tokenizer.cpp" />
         <option value="$PROJECT_DIR$/说明.txt" />
-        <option value="$PROJECT_DIR$/1.plc0" />
         <option value="$PROJECT_DIR$/analyser/analyser.cpp" />
+        <option value="$PROJECT_DIR$/tokenizer/tokenizer.cpp" />
+        <option value="$PROJECT_DIR$/1.plc0" />
       </list>
     </option>
   </component>
@@ -169,6 +169,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -180,7 +181,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -305,19 +305,21 @@
       <workItem from="1576733640977" duration="538000" />
       <workItem from="1576735849439" duration="263000" />
       <workItem from="1576748733300" duration="1388000" />
+      <workItem from="1576750602928" duration="126000" />
+      <workItem from="1576758147646" duration="1218000" />
+      <workItem from="1576913764718" duration="499000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="134689000" />
+    <option name="totallyTimeSpent" value="136532000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="139" y="23" width="1234" height="877" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7719745" visible="true" weight="0.3238255" />
-      <window_info id="Structure" order="1" sideWeight="0.22802548" side_tool="true" visible="true" weight="0.3238255" />
-      <window_info id="Favorites" order="2" sideWeight="0.16225749" side_tool="true" weight="0.23825504" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7692308" visible="true" weight="0.3397651" />
+      <window_info id="Structure" order="1" sideWeight="0.23076923" side_tool="true" weight="0.3338926" />
+      <window_info id="Favorites" order="2" sideWeight="0.23076923" side_tool="true" weight="0.3338926" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3299363" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32866243" />
@@ -329,7 +331,7 @@
       <window_info anchor="bottom" id="Messages" order="8" weight="0.32866243" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.3210191" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.3210191" />
       <window_info anchor="bottom" id="CMake" order="12" weight="0.3299363" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -461,6 +463,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/analyser/analyser.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9615">
+          <caret line="641" column="21" selection-start-line="641" selection-start-column="21" selection-end-line="641" selection-end-column="21" />
+          <folding>
+            <element signature="e#45#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/fmts.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1575">
@@ -480,8 +492,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tokenizer/tokenizer.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4426">
-          <caret line="444" column="45" selection-start-line="444" selection-start-column="35" selection-end-line="444" selection-end-column="45" />
+        <state relative-caret-position="435">
+          <caret line="754" column="38" selection-start-line="754" selection-start-column="38" selection-end-line="754" selection-end-column="38" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
           </folding>
@@ -490,18 +502,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/1.plc0">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/analyser/analyser.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16">
-          <caret line="697" column="68" selection-start-line="697" selection-start-column="68" selection-end-line="697" selection-end-column="68" />
-          <folding>
-            <element signature="e#45#63#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="150">
+          <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
         </state>
       </provider>
     </entry>

@@ -745,6 +745,7 @@ namespace miniplc0 {
                                                               std::make_optional<CompilationError>(pos,
                                                                                                    ErrorCode::ErrInvalidInput));
                                     c = a * 16 + b;
+                                    printf("%d\n",c);
                                     break;
                                 }
                             }
@@ -897,7 +898,8 @@ namespace miniplc0 {
     int Tokenizer::to_hexa(char c) {
 	    switch (c)
         {
-            case '1':
+
+	        case '1':
                 return 1;
             case '2':
                 return 2;

@@ -636,6 +636,14 @@ namespace miniplc0 {
             return std::make_optional<CompilationError>(_current_pos, ErrorCode::ErrorNeedBracket);
         // [<printable-list>]
         next=nextToken();
+        if(next.value().GetType()==TokenType::RIGHT_SMALL_BRACKET)
+        {
+            ins[func].push_back("printl");
+            return{};
+
+        }
+
+
         if(next.value().GetType()==TokenType::CHAR)
         {
             const char *c=next.value().GetValueString().c_str();
